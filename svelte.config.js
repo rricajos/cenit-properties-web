@@ -16,20 +16,43 @@
 // };
 
 // export default config;
+// import adapter from '@sveltejs/adapter-static';
+// import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+// const dev = process.env.NODE_ENV === 'development';
+
+// // ⚠️ IMPORTANTE:
+// // Si tu página será https://TUUSUARIO.github.io/cenit-properties-web
+// // usa '/cenit-properties-web' como base en producción.
+// // Si tu repo será TUUSUARIO.github.io (sin subcarpeta), pon '' siempre.
+// const base = dev ? '' : '/cenit-properties-web';
+
+// const config = {
+// 	preprocess: vitePreprocess(),
+
+// 	kit: {
+// 		adapter: adapter({
+// 			pages: 'build',
+// 			assets: 'build',
+// 			fallback: undefined
+// 		}),
+// 		paths: {
+// 			base
+// 		},
+// 		prerender: {
+// 			entries: ['*']
+// 		}
+// 	}
+// };
+
+// export default config;
+
+// svelte.config.js
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-const dev = process.env.NODE_ENV === 'development';
-
-// ⚠️ IMPORTANTE:
-// Si tu página será https://TUUSUARIO.github.io/cenit-properties-web
-// usa '/cenit-properties-web' como base en producción.
-// Si tu repo será TUUSUARIO.github.io (sin subcarpeta), pon '' siempre.
-const base = dev ? '' : '/cenit-properties-web';
-
 const config = {
 	preprocess: vitePreprocess(),
-
 	kit: {
 		adapter: adapter({
 			pages: 'build',
@@ -37,10 +60,7 @@ const config = {
 			fallback: undefined
 		}),
 		paths: {
-			base
-		},
-		prerender: {
-			entries: ['*']
+			base: '' // ¡nada de /cenit-properties-web!
 		}
 	}
 };
