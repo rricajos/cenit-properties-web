@@ -1,1 +1,2 @@
-export const prerender = true;
+// +layout.ts
+export const prerender = 'auto';
