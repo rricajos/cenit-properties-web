@@ -95,8 +95,8 @@
 		<FeatureCardGrid items={featureItems} />
 	</section>
 
-	<!-- 3. Mosaico 2x2: Ideas de diseño / Planes de casa -->
-	<section id="ideas-y-planes" class="section section--mosaic">
+	<!-- 3. Mosaico 2x2: Ideas de diseño / Planes de casa (lo usamos como SERVICIOS) -->
+	<section id="servicios" class="section section--mosaic">
 		<!-- Dentro de MosaicSection ya maquetas las 4 celdas según la maqueta -->
 		<MosaicSection />
 	</section>
@@ -124,8 +124,8 @@
 		/>
 	</section>
 
-	<!-- 7. Bloque numerado 01 / 02 -->
-	<section id="ventajas" class="section section--numbered">
+	<!-- 7. Bloque numerado 01 / 02 (lo usamos como EQUIPO en el menú) -->
+	<section id="equipo" class="section section--numbered">
 		<NumberedFeatureGrid items={numberedItems} />
 	</section>
 
