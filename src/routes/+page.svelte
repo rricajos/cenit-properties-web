@@ -91,7 +91,7 @@
 	</section>
 
 	<!-- 2. PROYECTOS / PREMIOS / NUESTRO EQUIPO -->
-	<section id="valores" class="section section--features">
+	<section id="proyectos" class="section section--features">
 		<FeatureCardGrid items={featureItems} />
 	</section>
 
