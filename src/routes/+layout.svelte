@@ -1,11 +1,18 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
-
-	let { children } = $props();
+	import LayoutShell from '$lib/components/layout/LayoutShell.svelte';
+	import Header from '$lib/components/header/Header.svelte';
+	import Footer from '$lib/components/footer/Footer.svelte';
 </script>
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
+<LayoutShell>
+	<svelte:fragment slot="header">
+		<Header />
+	</svelte:fragment>
 
-{@render children()}
+	<!-- aquí se inyectan las páginas (home, etc.) -->
+	<slot />
+
+	<svelte:fragment slot="footer">
+		<Footer />
+	</svelte:fragment>
+</LayoutShell>
