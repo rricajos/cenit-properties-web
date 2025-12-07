@@ -35,7 +35,7 @@
 
 <style>
 	.hero-content {
-		background: #ffffff;
+		background: var(--color-card);
 		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;

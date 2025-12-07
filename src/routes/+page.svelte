@@ -166,21 +166,4 @@
 
 	.section--hero {
 	}
-
-	.btn {
-		border-radius: 999px;
-		padding: 0.7rem 1.6rem;
-		font-size: 0.9rem;
-		border: 1px solid #000;
-		cursor: pointer;
-	}
-
-	.btn-primary {
-		background: var(--color-primary);
-		color: var(--color-text);
-	}
-	.btn-outline {
-		background: transparent;
-		color: var(--color-text);
-	}
 </style>

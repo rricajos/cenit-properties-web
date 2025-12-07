@@ -38,7 +38,7 @@
 
 <style>
 	.hero-split {
-		background: #fff;
+		background: var(--color-card);
 		border-radius: 1rem;
 		overflow: hidden;
 	}
