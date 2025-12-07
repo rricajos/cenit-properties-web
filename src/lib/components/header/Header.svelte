@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Logo from './Logo.svelte';
 	import NavLinks, { type NavLink } from './NavLinks.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 
 	export let links: NavLink[] = [
 		{ href: '#servicios', label: 'Servicios' },
@@ -14,7 +15,6 @@
 	function updateHeaderOffset() {
 		if (!headerEl) return;
 		const h = headerEl.offsetHeight;
-		// Lo guardamos como variable CSS global
 		document.documentElement.style.setProperty('--header-offset', `${h}px`);
 	}
 
@@ -28,6 +28,14 @@
 			window.removeEventListener('resize', resizeHandler);
 		};
 	});
+
+	function scrollToContact(event: MouseEvent) {
+		event.preventDefault();
+		const section = document.querySelector<HTMLElement>('#contacto');
+		if (section) {
+			section.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
 </script>
 
 <header class="site-header" bind:this={headerEl}>
@@ -38,7 +46,9 @@
 			<NavLinks {links} orientation="horizontal" />
 		</nav>
 
-		<a href="#contacto" class="btn btn-primary site-header__cta"> Solicitar Consulta </a>
+		<div class="site-header__cta-wrapper">
+			<Button variant="primary" size="md" on:click={scrollToContact}>Solicitar Consulta</Button>
+		</div>
 	</div>
 </header>
 
@@ -59,7 +69,7 @@
 		max-width: var(--layout-max-width);
 		margin: 0 auto;
 		padding-inline: var(--page-padding-x);
-		padding-block: 0.55rem; /* +0.1rem respecto a antes */
+		padding-block: 0.55rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -82,32 +92,20 @@
 		font-weight: 500;
 	}
 
-	/* CTA: dejamos que parezca un botón "de verdad", no un chip enano */
-	.site-header__cta {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		text-decoration: none;
-		white-space: nowrap;
-		padding-block: 0.55rem; /* más alto */
-		padding-inline: 1.4rem; /* un pelín más ancho */
-		font-size: 0.9rem; /* igual que el hero */
-	}
-
-	.site-header__cta:hover,
-	.site-header__cta:focus-visible {
-		opacity: 0.92;
+	/* Solo layout, el botón hereda todo su estilo de Button.svelte */
+	.site-header__cta-wrapper {
+		flex-shrink: 0;
 	}
 
 	/* MOBILE */
 	@media (max-width: 767px) {
 		.site-header__inner {
-			padding-block: 0.6rem; /* header entero algo más alto */
-			padding-inline: 1.5rem; /* como tú proponías */
+			padding-block: 0.6rem;
+			padding-inline: 1.5rem; /* el que viste que cuadra bien */
 		}
 
 		.site-header__nav {
-			display: none; /* solo logo + CTA */
+			display: none; /* solo logo + CTA en móvil */
 		}
 	}
 
