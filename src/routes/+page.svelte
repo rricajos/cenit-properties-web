@@ -9,6 +9,7 @@
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
 	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
 	import FaqSection from '$lib/components/sections/FaqSection.svelte';
+
 	import type { ComponentProps } from 'svelte';
 	import type { FaqItem } from '$lib/components/sections/FaqSection.svelte';
 
@@ -276,9 +277,7 @@
 	</section>
 
 	<!-- 9. Contacto + mapa -->
-	<section id="contacto" class="section section--contact">
-		<ContactSection />
-	</section>
+	<ContactSection id="contacto" />
 </main>
 
 <style>
@@ -301,5 +300,10 @@
 	.section--hero {
 		/* micro aire entre header y tarjeta */
 		margin-top: 0.25rem;
+	}
+
+	.section--contact {
+		max-width: none;
+		padding-inline: 0;
 	}
 </style>

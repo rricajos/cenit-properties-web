@@ -1,16 +1,13 @@
-<!-- src/lib/components/contact/ContactSection.svelte -->
 <script lang="ts">
 	import ContactIntro from './ContactIntro.svelte';
 	import ContactForm from './ContactForm.svelte';
 	import MapEmbed from './MapEmbed.svelte';
 
 	export let id = 'contacto';
-
-	// Podrás pasar props desde la página si quieres personalizar textos o mapa
 </script>
 
 <section {id} class="contact-section">
-	<div class="contact-section__content">
+	<div class="contact-section__inner">
 		<div class="contact-section__left">
 			<ContactIntro />
 			<ContactForm />
@@ -23,33 +20,58 @@
 </section>
 
 <style>
+	/* Fondo de banda a todo ancho */
 	.contact-section {
-		background-color: #111; /* fondo muy oscuro */
-		color: #f5f5f5;
-		padding: 4rem 1.5rem;
+		background: var(--accent-soft, #ece9ff);
+		padding-block: 4rem;
+		color: var(--color-text);
 	}
 
-	.contact-section__content {
-		max-width: 1100px;
+	/* Contenido centrado y limitado */
+	.contact-section__inner {
+		max-width: var(--layout-max-width);
 		margin: 0 auto;
+		padding-inline: var(--page-padding-x);
 		display: grid;
 		gap: 2.5rem;
 		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+		align-items: stretch;
 	}
 
 	.contact-section__left {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		background: var(--color-surface, var(--color-card));
+		border-radius: var(--radius-md, 1rem);
+		padding: 1.8rem 1.6rem;
+		box-shadow: var(--shadow-soft, 0 10px 30px #0000000f);
 	}
 
 	.contact-section__right {
 		min-height: 320px;
+		border-radius: var(--radius-md, 1rem);
+		overflow: hidden;
+		box-shadow: var(--shadow-soft, 0 10px 30px #0000000f);
+		background: var(--color-surface, #000);
 	}
 
 	@media (max-width: 800px) {
-		.contact-section__content {
+		.contact-section {
+			padding-block: 3rem;
+		}
+
+		.contact-section__inner {
 			grid-template-columns: 1fr;
+		}
+
+		.contact-section__left {
+			order: 1;
+			padding: 1.6rem 1.3rem;
+		}
+
+		.contact-section__right {
+			order: 2;
 		}
 	}
 </style>

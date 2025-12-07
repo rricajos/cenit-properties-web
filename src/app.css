@@ -47,7 +47,7 @@
 	--header-offset: 72px;
 	--page-padding-x: 1rem;
 
-	--layout-max-width: 900px;
+	--layout-max-width: 1024px;
 }
 
 @media (min-width: 768px) {
