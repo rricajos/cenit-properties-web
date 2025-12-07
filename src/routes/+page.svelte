@@ -1,6 +1,4 @@
-<!-- src/routes/+page.svelte -->
 <script lang="ts">
-	// Ajusta estas rutas a cómo tengas organizado tu /lib/components
 	import HeroSplit from '$lib/components/hero/HeroSplit.svelte';
 	import FeatureCardGrid from '$lib/components/features/FeatureCardGrid.svelte';
 	import MosaicSection from '$lib/components/mosaic/MosaicSection.svelte';
@@ -9,6 +7,83 @@
 	import TwoImageSection from '$lib/components/sections/TwoImageSection.svelte';
 	import NumberedFeatureGrid from '$lib/components/features/NumberedFeatureGrid.svelte';
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
+	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
+	import type { ComponentProps } from 'svelte';
+
+	// Tipo local para los items del mosaico (igual que en MosaicSection)
+	type MosaicItemConfig = Omit<ComponentProps<typeof MosaicItem>, 'mobileOrder'> & {
+		flipOnMobile?: boolean;
+	};
+
+	const serviciosItems: MosaicItemConfig[] = [
+		// 1️⃣ Inmobiliaria tradicional (texto, imagen) → NO flip
+		{
+			variant: 'light',
+			title: 'Inmobiliaria tradicional',
+			text: `Nuestro core es la compra-venta de inmuebles. Te ayudamos a encontrar la propiedad perfecta o a vender la tuya al mejor precio del mercado. Asesoramiento profesional en cada paso del proceso inmobiliario.
+
+• Valoración profesional de propiedades
+• Gestión completa de compra-venta
+• Asesoramiento legal y documental`
+		},
+		{
+			variant: 'image',
+			src: '/images/sections/servicios/inmobiliaria-tradicional.jpg',
+			alt: 'Agente inmobiliario asesorando a una familia en el salón de su casa'
+		},
+
+		// 2️⃣ Home Staging (imagen, texto) → flip en móvil
+		{
+			variant: 'image',
+			src: '/images/sections/servicios/home-staging.jpg',
+			alt: 'Salón decorado con estilo acogedor preparado para la venta',
+			flipOnMobile: true
+		},
+		{
+			variant: 'light',
+			title: 'Home Staging profesional',
+			text: `Preparamos tu propiedad para que se venda más rápido y al mejor precio. Diseño y decoración estratégica que resalta el potencial de cada espacio sin inversiones excesivas.
+
+• Decoración temporal para venta
+• Fotografía profesional incluida
+• Optimización de espacios`,
+			flipOnMobile: true
+		},
+
+		// 3️⃣ Diseño y reforma integral (texto, imagen) → NO flip
+		{
+			variant: 'light',
+			title: 'Diseño y reforma integral',
+			text: `Proyectos de interiorismo completos y reformas rentables. Transformamos espacios en hogares funcionales y bonitos, optimizando cada euro invertido para maximizar el valor de tu propiedad.
+
+• Proyectos de diseño personalizados
+• Reformas con acabados de calidad
+• Gestión completa de obra`
+		},
+		{
+			variant: 'image',
+			src: '/images/sections/servicios/diseno-reforma-integral.jpg',
+			alt: 'Cocina reformada con muebles de madera y mucha luz natural'
+		},
+
+		// 4️⃣ Asesoría fiscal (imagen, texto) → flip en móvil
+		{
+			variant: 'image',
+			src: '/images/sections/servicios/asesoria-fiscal.jpg',
+			alt: 'Reunión entre dos profesionales revisando documentación fiscal',
+			flipOnMobile: true
+		},
+		{
+			variant: 'light',
+			title: 'Asesoría fiscal completa',
+			text: `Gestión de todos los trámites fiscales y legales relacionados con tu operación inmobiliaria. Te acompañamos en cada paso para que no tengas que preocuparte de nada.
+
+• Gestión de impuestos inmobiliarios
+• Optimización fiscal de la operación
+• Tramitación completa de documentos`,
+			flipOnMobile: true
+		}
+	];
 
 	// Tipos de datos para las secciones que reciben arrays
 	type FeatureItem = {
@@ -49,18 +124,21 @@
 	const featureItems: FeatureItem[] = [
 		{
 			icon: 'rocket',
-			title: 'Proyectos',
-			text: 'Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.'
+			title: 'Proyectos que revalorizan',
+			text: 'Seleccionamos, reformamos y preparamos cada inmueble para que destaque en el mercado y aumente su valor real y percibido.',
+			href: '#interiores' // o a la sección de proyectos que prefieras
 		},
 		{
 			icon: 'medal',
-			title: 'Premios',
-			text: 'Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.'
+			title: 'Resultados medibles',
+			text: 'Analizamos cada operación: tiempos de venta, incremento de valor tras la reforma y satisfacción de propietarios e inversores.',
+			href: '#claim'
 		},
 		{
 			icon: 'team',
 			title: 'Nuestro equipo',
-			text: 'Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.'
+			text: 'Arquitectura, interiorismo, reforma y asesoría fiscal en un mismo equipo para que no tengas que coordinar a nadie más.',
+			href: '#equipo'
 		}
 	];
 
@@ -114,7 +192,7 @@
 	<!-- 3. Mosaico 2x2: Ideas de diseño / Planes de casa (lo usamos como SERVICIOS) -->
 	<section id="servicios" class="section section--mosaic">
 		<!-- Dentro de MosaicSection ya maquetas las 4 celdas según la maqueta -->
-		<MosaicSection />
+		<MosaicSection id="mosaic" items={serviciosItems} />
 	</section>
 
 	<!-- 4. Título centrado: "Nuevas ideas a la vida" -->

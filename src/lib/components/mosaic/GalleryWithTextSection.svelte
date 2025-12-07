@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import MosaicItem from './MosaicItem.svelte';
 
 	export let id;

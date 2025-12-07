@@ -40,6 +40,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
+		box-shadow: var(--card-shadow);
 	}
 
 	.hero-eyebrow {

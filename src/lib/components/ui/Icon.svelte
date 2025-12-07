@@ -1,9 +1,10 @@
 <script lang="ts">
-	export let size = 40; // px
+	export let w = '40px';
+	export let h = '40px';
 	export let className = '';
 </script>
 
-<span class={`icon ${className}`.trim()} style={`width:${size}px; height:${size}px;`}>
+<span class={`icon ${className}`.trim()} style={`width:${w}; height:${h};`}>
 	<slot />
 </span>
 

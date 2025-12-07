@@ -41,9 +41,11 @@
 		background: var(--color-card);
 		border-radius: 1rem;
 		overflow: hidden;
+		box-shadow: var(--card-shadow);
 	}
 
 	.hero-split__inner {
+		box-shadow: var(--card-shadow);
 		max-width: 1200px;
 		margin: 0 auto;
 		display: grid;

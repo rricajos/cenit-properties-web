@@ -24,7 +24,20 @@
 <style>
 	.numbered-feature-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-		gap: 1.75rem;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	@media (min-width: 640px) {
+		.numbered-feature-grid {
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1.25rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.numbered-feature-grid {
+			gap: 1.6rem;
+		}
 	}
 </style>

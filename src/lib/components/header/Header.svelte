@@ -48,7 +48,16 @@
 	<div
 		class="site-header__overlay"
 		class:site-header__overlay--visible={isOpen}
+		role="button"
+		tabindex="0"
+		aria-label="Cerrar menú de navegación"
 		on:click={closeMenu}
+		on:keydown={(event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				closeMenu();
+			}
+		}}
 	></div>
 
 	<!-- MENÚ MÓVIL: SE DESPLIEGA DESDE ABAJO -->

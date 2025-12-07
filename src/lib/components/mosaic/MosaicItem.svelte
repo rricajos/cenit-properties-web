@@ -1,28 +1,29 @@
 <script lang="ts">
-	/**
-	 * variant:
-	 *  - "image" → bloque que muestra solo una imagen
-	 *  - "light" → bloque de texto con fondo claro
-	 *  - "dark"  → bloque de texto con fondo oscuro
-	 */
 	export let variant: 'image' | 'light' | 'dark' = 'image';
 
-	// Para la variante "image"
 	export let src: string | null = null;
 	export let alt: string = '';
 
-	// Para variantes de texto
 	export let title: string = '';
 	export let text: string = '';
+
+	// Clase extra opcional
+	export let className: string = '';
+
+	// Orden en mobile (la calcula MosaicSection)
+	export let mobileOrder: number | undefined = undefined;
 </script>
 
-<div class={`mosaic-item mosaic-item--${variant}`}>
+<div
+	class={`mosaic-item mosaic-item--${variant} ${className}`}
+	style={`--mobile-order: ${mobileOrder ?? 0}`}
+>
 	{#if variant === 'image'}
 		{#if src}
 			<img class="mosaic-item__image" {src} {alt} />
 		{/if}
 
-		<!-- Slot opcional por si quieres poner overlay, etc. -->
+		<!-- Slot opcional por si quieres overlay o similar -->
 		<slot />
 	{:else}
 		<div class="mosaic-item__content">
@@ -47,18 +48,24 @@
 		overflow: hidden;
 	}
 
+	@media (max-width: 768px) {
+		.mosaic-item {
+			order: var(--mobile-order, 0);
+		}
+	}
+
 	.mosaic-item--image {
-		background: #ccc;
+		background: var(--color-card);
 	}
 
 	.mosaic-item--light {
-		background: #f4f1ec;
-		color: #191613;
+		background: var(--color-card);
+		color: var(--color-text);
 	}
 
 	.mosaic-item--dark {
-		background: #1f1a16;
-		color: #f5f5f5;
+		background: var(--color-card);
+		color: var(--color-text);
 	}
 
 	.mosaic-item__image {
@@ -83,5 +90,6 @@
 	.mosaic-item__content p {
 		font-size: 0.9rem;
 		line-height: 1.6;
+		white-space: pre-line;
 	}
 </style>

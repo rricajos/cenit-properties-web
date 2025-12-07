@@ -4,6 +4,7 @@
 	/* LIGHT por defecto */
 	--color-bg: #f9f8fe;
 	--color-card: #fff;
+	--card-shadow: 0 10px 30px #0000000f;
 	--color-text: #121318;
 	--color-text-muted: #7a726b;
 
