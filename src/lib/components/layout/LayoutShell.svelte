@@ -35,7 +35,7 @@
 	}
 
 	.l-shell--framed {
-		padding: 1.5rem;
+		padding: 0.25rem;
 	}
 
 	.l-shell__header,

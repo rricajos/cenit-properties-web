@@ -25,17 +25,25 @@
 
 	// Datos del hero principal
 	const hero = {
-		title: 'Casa de estilo tailandés Wabi Sabi',
+		title: 'Logramos el cénit de los inmuebles en el mercado',
 		description:
 			'La casa está rodeada por un jardín y hay muchos vecinos diferentes en la zona. La casa promedio está creada para una sola familia.',
 		// Rutas de imágenes de ejemplo; pon aquí las de tu carpeta static/
-		mainImage: '/images/hero/main.jpg',
-		collageImages: [
-			'/images/hero/collage-1.jpg',
-			'/images/hero/collage-2.jpg',
-			'/images/hero/collage-3.jpg'
-		]
+		mainImage: '/images/hero/cenit-hero.jpg'
+		// collageImages: [
+		// 	'/images/hero/collage-1.jpg',
+		// 	'/images/hero/collage-2.jpg',
+		// 	'/images/hero/collage-3.jpg'
+		// ]
 	};
+
+	const stripImages = [
+		{ src: '/images/cenit-strip-1.jpg', alt: 'Detalle salón reformado' },
+		{ src: '/images/cenit-strip-2.jpg', alt: 'Cocina reformada' },
+		{ src: '/images/cenit-strip-3.jpg', alt: 'Dormitorio luminoso' }
+	];
+
+	const tags = ['Diseños · Reformas · Asesorías'];
 
 	// Tarjetas PROYECTOS / PREMIOS / NUESTRO EQUIPO
 	const featureItems: FeatureItem[] = [
@@ -83,11 +91,19 @@
 	<!-- 1. HERO principal: imagen grande + texto + collage de 3 imágenes -->
 	<section id="inicio" class="section section--hero">
 		<HeroSplit
-			title={hero.title}
-			description={hero.description}
+			eyebrow="CÉNIT · Servicio integral inmobiliario"
+			title="La inmobiliaria que lo hace todo"
+			description="
+      Somos una inmobiliaria diferente. No solo te ayudamos a comprar o vender tu
+      propiedad, también nos encargamos del home staging, el diseño interior, las
+      reformas necesarias y toda la gestión fiscal. Todo en un solo lugar."
 			mainImage={hero.mainImage}
-			collageImages={hero.collageImages}
-		/>
+			mainImageAlt="Salón luminoso reformado con estilo cálido"
+			{tags}
+		>
+			<button class="btn btn-primary">Ver servicios</button>
+			<button class="btn btn-outline">Contactar</button>
+		</HeroSplit>
 	</section>
 
 	<!-- 2. PROYECTOS / PREMIOS / NUESTRO EQUIPO -->
@@ -143,7 +159,7 @@
 	}
 
 	.section {
-		padding-inline: 1.5rem;
+		padding-inline: 0.1rem;
 	}
 
 	.section--hero {
@@ -154,5 +170,23 @@
 		.section {
 			padding-inline: 3rem;
 		}
+	}
+
+	.btn {
+		border-radius: 999px;
+		padding: 0.7rem 1.6rem;
+		font-size: 0.9rem;
+		border: 1px solid #000;
+		cursor: pointer;
+	}
+
+	.btn-primary {
+		background: #000;
+		color: #fff;
+	}
+
+	.btn-outline {
+		background: #fff;
+		color: #000;
 	}
 </style>

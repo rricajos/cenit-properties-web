@@ -1,75 +1,90 @@
-<!-- src/lib/components/hero/HeroSplit.svelte -->
 <script lang="ts">
 	import HeroMedia from './HeroMedia.svelte';
 	import HeroContent from './HeroContent.svelte';
 
 	export let title: string;
 	export let description: string;
+	export let eyebrow: string | null = null;
+	export let tags: string[] = [];
+
 	export let mainImage: string;
 	export let mainImageAlt: string = '';
 
-	export let collageImages: string[] = [];
-
-	// Permite invertir la disposición si algún día lo necesitas
+	// por si algún día quieres invertir la posición en desktop
 	export let imageSide: 'left' | 'right' = 'left';
 </script>
 
 <section class="hero-split">
-	<div class={`hero-split__grid hero-split__grid--${imageSide}`}>
+	<div class={`hero-split__inner hero-split__inner--${imageSide}`}>
 		{#if imageSide === 'left'}
-			<!-- Imagen a la izquierda, texto a la derecha -->
 			<HeroMedia src={mainImage} alt={mainImageAlt} />
-			<HeroContent {title} {description} />
+
+			<div class="hero-split__content">
+				<HeroContent {title} {description} {eyebrow} {tags}>
+					<slot />
+				</HeroContent>
+			</div>
 		{:else}
-			<!-- Texto a la izquierda, imagen a la derecha -->
-			<HeroContent {title} {description} />
+			<div class="hero-split__content">
+				<HeroContent {title} {description} {eyebrow} {tags}>
+					<slot />
+				</HeroContent>
+			</div>
+
 			<HeroMedia src={mainImage} alt={mainImageAlt} />
 		{/if}
 	</div>
-
-	{#if collageImages && collageImages.length}
-		<div class="hero-split__collage">
-			{#each collageImages as src, index}
-				<img
-					{src}
-					alt={`Imagen secundaria ${index + 1} de ${title}`}
-					class="hero-split__collage-image"
-				/>
-			{/each}
-		</div>
-	{/if}
 </section>
 
 <style>
 	.hero-split {
-		background: #e0dfdd; /* gris suave similar a la maqueta */
-		padding: 2rem 1.5rem 3rem;
+		background: #fff;
+		border-radius: 1rem;
+		overflow: hidden;
 	}
 
-	.hero-split__grid {
+	.hero-split__inner {
+		max-width: 1200px;
+		margin: 0 auto;
 		display: grid;
-		gap: 2rem;
-		align-items: stretch;
+		grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+		align-items: stretch; /* 👈 ESTIRAR LAS DOS COLUMNAS */
+		min-height: 420px; /* opcional: altura mínima del hero */
 	}
 
-	@media (min-width: 900px) {
-		.hero-split__grid {
-			grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+	.hero-split__inner--right {
+		direction: rtl;
+	}
+
+	.hero-split__inner--right > * {
+		direction: ltr;
+	}
+
+	.hero-split__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	/* RESPONSIVE */
+	@media (max-width: 900px) {
+		.hero-split {
+		}
+
+		.hero-split__inner {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		/* en móvil dejamos siempre imagen arriba y texto debajo */
+		.hero-split__inner--right,
+		.hero-split__inner--left {
+			direction: ltr;
 		}
 	}
 
-	.hero-split__collage {
-		margin-top: 1.5rem;
-		display: grid;
-		grid-auto-flow: column;
-		grid-auto-columns: 1fr;
-		gap: 0.75rem;
-	}
-
-	.hero-split__collage-image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		display: block;
+	@media (max-width: 600px) {
+		.hero-split__inner {
+			gap: 1.5rem;
+		}
 	}
 </style>

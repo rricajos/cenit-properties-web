@@ -1,15 +1,12 @@
 <script lang="ts">
-	export type StripImage = {
-		src: string;
-		alt?: string;
-	};
+	export type StripImage = { src: string; alt?: string };
 
-	export let images: StripImage[] = [];
+	export let stripImages: StripImage[] = [];
 </script>
 
-{#if images.length}
+{#if stripImages.length}
 	<div class="image-strip">
-		{#each images as image (image.src)}
+		{#each stripImages as image (image.src)}
 			<figure class="image-strip__item">
 				<img src={image.src} alt={image.alt ?? ''} loading="lazy" />
 			</figure>
@@ -29,18 +26,13 @@
 		width: 100%;
 		aspect-ratio: 4 / 3;
 		overflow: hidden;
+		border-radius: 10px;
 	}
 
 	.image-strip__item img {
-		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
-
-	@media (max-width: 640px) {
-		.image-strip {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
+		display: block;
 	}
 </style>
