@@ -112,17 +112,26 @@
 		background: #d9d9d9;
 	}
 
+	/* Imagen base */
 	.gallery-section__item img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		transform: scale(1.03);
-		transition: transform 200ms ease-out;
+		transform: scale(1.02);
+		transform-origin: center center;
+		transition:
+			transform 260ms cubic-bezier(0.19, 1, 0.22, 1),
+			filter 260ms ease-out;
 	}
 
-	.gallery-section__item:hover img {
-		transform: scale(1.07);
+	/* Sólo hover real (desktop) */
+	@media (hover: hover) and (pointer: fine) {
+		.gallery-section__item:hover img,
+		.gallery-section__item:focus-within img {
+			transform: scale(1.08) rotate3d(-0.15, 0.9, 0, 3deg) translateY(-2px);
+			filter: brightness(1.04) saturate(1.05);
+		}
 	}
 
 	/* Composición de las 3 imágenes en escritorio:

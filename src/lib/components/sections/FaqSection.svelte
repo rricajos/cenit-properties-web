@@ -6,7 +6,7 @@
 		answer: string;
 	};
 
-	export let eyebrow: string = 'FAQ';
+	export let eyebrow: string = 'FAQ · Frequently Asked Questions';
 	export let title: string = 'Preguntas frecuentes';
 	export let intro: string = '';
 	export let items: FaqItem[] = [];

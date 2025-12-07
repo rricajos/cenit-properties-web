@@ -1,43 +1,38 @@
 <script lang="ts">
 	import NumberedCard from './NumberedCard.svelte';
 
-	export interface NumberedFeatureItem {
-		id?: string | number;
-		number: number | string;
+	export type NumberedItem = {
+		number: string;
 		title: string;
 		text: string;
-	}
+	};
 
-	export let items: NumberedFeatureItem[] | null = null;
+	export let items: NumberedItem[] = [];
 </script>
 
-<section class="numbered-feature-grid">
-	{#if items && items.length}
-		{#each items as item (item.id ?? item.number)}
-			<NumberedCard number={item.number} title={item.title} text={item.text} />
-		{/each}
-	{:else}
-		<slot />
-	{/if}
+<section class="numbered-grid">
+	{#each items as item (item.number)}
+		<NumberedCard number={item.number} title={item.title} text={item.text} />
+	{/each}
 </section>
 
 <style>
-	.numbered-feature-grid {
+	.numbered-grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 2rem 2.5rem; /* filas | columnas */
 	}
 
+	/* 2 columnas en tablet */
 	@media (min-width: 640px) {
-		.numbered-feature-grid {
-			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-			gap: 1.25rem;
+		.numbered-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 
+	/* 3 columnas en desktop */
 	@media (min-width: 1024px) {
-		.numbered-feature-grid {
-			gap: 1.6rem;
+		.numbered-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 		}
 	}
 </style>

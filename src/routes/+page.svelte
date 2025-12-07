@@ -164,17 +164,51 @@
 		}
 	];
 
-	// Tarjetas numeradas 01 / 02
 	const numberedItems: NumberedItem[] = [
 		{
 			number: '01',
-			title: 'Interiores impresionantes',
-			text: 'Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id suscipit ex. Suspendisse rhoncus laoreet purus quis elementum.'
+			title: 'Hasta un 15 % más de valor',
+			text: 'Reforma y puesta en escena pensadas para subir el precio final, no solo la foto.'
 		},
 		{
 			number: '02',
-			title: 'Fresco y creativo',
-			text: 'Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id suscipit ex. Suspendisse rhoncus laoreet purus quis elementum.'
+			title: 'Venta en menos tiempo',
+			text: 'Inmueble preparado para reducir días en portal y evitar bajadas de precio.'
+		},
+		{
+			number: '03',
+			title: 'Inversión con retorno',
+			text: 'Solo proponemos cambios con impacto claro en valor o velocidad de venta.'
+		},
+		{
+			number: '04',
+			title: 'Un único interlocutor',
+			text: 'Reforma, inmobiliaria y fiscalidad coordinadas en un solo equipo.'
+		},
+		{
+			number: '05',
+			title: 'Datos reales de mercado',
+			text: 'Valoración basada en comparables actuales, no en precios “emocionales”.'
+		},
+		{
+			number: '06',
+			title: 'Riesgo controlado',
+			text: 'Presupuesto cerrado y calendario definido antes de empezar la obra.'
+		},
+		{
+			number: '07',
+			title: 'Fotografía que vende',
+			text: 'Reportaje profesional pensado para destacar en los portales inmobiliarios.'
+		},
+		{
+			number: '08',
+			title: 'Trámites sin sorpresas',
+			text: 'ITP, plusvalía, IRPF… planificamos la parte fiscal desde el principio.'
+		},
+		{
+			number: '09',
+			title: 'Filtramos curiosos',
+			text: 'Precalificamos a los interesados para que solo visites con compradores reales.'
 		}
 	];
 
@@ -262,8 +296,13 @@
 		/>
 	</section>
 
-	<!-- 7. Bloque numerado 01 / 02 (lo usamos como EQUIPO en el menú) -->
+	<!-- 7. Bloque numerado (argumentos racionales) -->
 	<section id="equipo" class="section section--numbered">
+		<header class="numbered-section__header">
+			<p class="numbered-section__eyebrow">Here are the Features</p>
+			<h2 class="numbered-section__title">Resultados esperados</h2>
+		</header>
+
 		<NumberedFeatureGrid items={numberedItems} />
 	</section>
 
@@ -305,5 +344,25 @@
 	.section--contact {
 		max-width: none;
 		padding-inline: 0;
+	}
+
+	.numbered-section__header {
+		text-align: left;
+		margin-bottom: 1.75rem;
+	}
+
+	.numbered-section__eyebrow {
+		margin: 0 0 0.35rem;
+		font-size: 0.78rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--accent-strong, #4b2aad);
+		font-weight: 600;
+	}
+
+	.numbered-section__title {
+		margin: 0;
+		font-size: clamp(1.4rem, 2.1vw, 1.8rem);
+		line-height: 1.2;
 	}
 </style>
