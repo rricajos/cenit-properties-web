@@ -4,7 +4,7 @@
 	/* LIGHT por defecto */
 	--color-bg: #fff8f6;
 	--color-card: #f5f2ef;
-	--color-text: #0f1111;
+	--color-text: #131313;
 	--color-text-muted: #7a726b;
 
 	--color-primary: #ffd814;
@@ -15,9 +15,9 @@
 /* DARK: se activa solo si el sistema está en modo oscuro */
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-bg: #11100e;
+		--color-bg: #131313;
 		--color-card: #1d1916;
-		--color-text: #f5eee8;
+		--color-text: #1a1008;
 		--color-text-muted: #b0a59a;
 
 		--color-primary: #ffd814;
