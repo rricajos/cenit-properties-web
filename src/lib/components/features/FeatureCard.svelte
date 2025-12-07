@@ -1,16 +1,25 @@
-<!-- src/lib/components/features/FeatureCard.svelte -->
 <script lang="ts">
+	import Icon from '$lib/components/ui/Icon.svelte';
+	import { Rocket, Award, Users } from 'lucide-svelte';
+
 	export let title: string;
 	export let text: string;
 	export let icon: string | undefined = undefined;
 </script>
 
 <article class="feature-card">
-	{#if icon}
-		<div class="feature-card__icon">
-			<!-- Aquí puedes cambiar por un <Icon name={icon} /> si usas un sistema de iconos -->
-			<span>{icon}</span>
-		</div>
+	{#if icon === 'rocket'}
+		<Icon size={40} className="feature-card__icon">
+			<Rocket />
+		</Icon>
+	{:else if icon === 'medal'}
+		<Icon size={40} className="feature-card__icon">
+			<Award />
+		</Icon>
+	{:else if icon === 'team'}
+		<Icon size={40} className="feature-card__icon">
+			<Users />
+		</Icon>
 	{/if}
 
 	<h3 class="feature-card__title">{title}</h3>
@@ -19,7 +28,7 @@
 
 <style>
 	.feature-card {
-		background: #ffffff;
+		background: var(--color-card);
 		padding: 2rem 1.5rem;
 		border-radius: 0.75rem;
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -29,14 +38,9 @@
 	}
 
 	.feature-card__icon {
-		width: 3rem;
-		height: 3rem;
 		border-radius: 999px;
-		border: 1px solid #ddd;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 1.25rem;
+		background: var(--accent-soft);
+		color: var(--accent-strong);
 	}
 
 	.feature-card__title {

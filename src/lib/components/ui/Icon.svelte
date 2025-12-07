@@ -12,6 +12,8 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		font-size: 1.3rem;
+		line-height: 1;
 	}
 
 	.icon :global(svg) {

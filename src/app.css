@@ -2,28 +2,32 @@
 	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 	/* LIGHT por defecto */
-	--color-bg: #fff8f6;
-	--color-card: #f5f2ef;
-	--color-text: #131313;
+	--color-bg: #f9f8fe;
+	--color-card: #fff;
+	--color-text: #121318;
 	--color-text-muted: #7a726b;
 
-	--color-primary: #171717;
-	--color-primary-contrast: #fff8f6;
+	/* primary = accent principal */
+	--color-primary: #4b2aad; /* indigo/morado sobrio */
+	--color-primary-contrast: #f9f8fe; /* texto del botón, mismo tono de fondo */
 
-	--accent-soft: #f4f0ff;
+	/* acentos secundarios (tags, chips, etc.) */
+	--accent-soft: #ece9ff; /* versión suavizada del primary */
 	--accent-strong: #4b2aad;
 }
 
 /* DARK: se activa solo si el sistema está en modo oscuro */
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-bg: #131313;
-		--color-card: #1d1916;
-		--color-text: #fff8f6;
+		--color-bg: #121318;
+		--color-card: #181922;
+		--color-text: #f9f8fe;
 		--color-text-muted: #b0a59a;
 
-		--color-primary: #f5f2ef;
-		--color-primary-contrast: #0f1111;
+		/* primary adaptado a dark: más claro */
+		--color-primary: #d2c4ff; /* lavanda claro */
+		--color-primary-contrast: #121318; /* texto oscuro dentro del botón */
+
 		--accent-soft: #241b33;
 		--accent-strong: #d2c4ff;
 	}
@@ -42,12 +46,11 @@ body {
 	padding: 0;
 }
 
-/* 👇 Aquí ya te integras con el nav */
 body {
 	font-family: var(--font-sans);
-	background-color: var(--color-bg); /* fondo según tema */
-	color: var(--color-text); /* texto según tema */
-	color-scheme: light dark; /* integra también scrollbars, inputs, etc. */
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	color-scheme: light dark;
 }
 
 figure {
@@ -58,7 +61,7 @@ figure {
 	border-radius: 1rem;
 	padding: 0.7rem 1.6rem;
 	font-size: 0.9rem;
-	border: 1px solid #000;
+	border: 1px solid transparent;
 	cursor: pointer;
 }
 
@@ -66,7 +69,9 @@ figure {
 	background: var(--color-primary);
 	color: var(--color-primary-contrast);
 }
+
 .btn-outline {
 	background: transparent;
 	color: var(--color-text);
+	border-color: var(--color-text);
 }
