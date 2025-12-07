@@ -37,12 +37,22 @@
 	--shadow-elevated: 0 18px 40px rgba(15, 23, 42, 0.12);
 
 	/* Botones */
-	--btn-radius: var(--radius-pill);
-	--btn-padding-y: 0.7rem;
-	--btn-padding-x: 1.6rem;
-	--btn-font-size: 0.9rem;
+	--btn-radius: 999px;
+	--btn-padding-y: 0.55rem; /* antes 0.7rem */
+	--btn-padding-x: 1.4rem; /* antes 1.6rem */
+	--btn-font-size: 0.88rem; /* un pelín más pequeño */
+
+	--header-height-mobile: 64px;
+	--header-height-desktop: 80px;
+	--header-offset: 64px;
 }
 
+@media (min-width: 768px) {
+	:root {
+		--page-padding-x: 2rem;
+		--header-offset: 80px; /* un poco más en desktop */
+	}
+}
 /* DARK: se activa solo si el sistema está en modo oscuro */
 @media (prefers-color-scheme: dark) {
 	:root {

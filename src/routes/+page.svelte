@@ -286,15 +286,19 @@
 		display: flex;
 		flex-direction: column;
 		gap: 4rem;
+		padding-top: calc(var(--header-offset) + 0.75rem);
 	}
 
 	.section {
-		padding-inline: 0.1rem;
-		max-width: 1024px;
+		padding-inline: var(--page-padding-x);
+		max-width: var(--layout-max-width);
 		margin: 0 auto;
+		/* Para que al hacer click en #servicios, #claim, etc.
+		   la sección quede bien colocada bajo el header fijo */
+		scroll-margin-top: calc(var(--header-offset) + 0.5rem);
 	}
 
 	.section--hero {
-		/* por si luego quieres estilos específicos */
+		/* por si quieres más ajustes específicos más adelante */
 	}
 </style>
