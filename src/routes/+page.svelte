@@ -286,19 +286,20 @@
 		display: flex;
 		flex-direction: column;
 		gap: 4rem;
-		padding-top: calc(var(--header-offset) + 0.75rem);
+		/* el header fijo ocupa justo este alto */
+		padding-top: var(--header-offset);
 	}
 
 	.section {
 		padding-inline: var(--page-padding-x);
 		max-width: var(--layout-max-width);
 		margin: 0 auto;
-		/* Para que al hacer click en #servicios, #claim, etc.
-		   la sección quede bien colocada bajo el header fijo */
-		scroll-margin-top: calc(var(--header-offset) + 0.5rem);
+		/* para que al hacer click en nav no se corte el título */
+		scroll-margin-top: calc(var(--header-offset) + 8px);
 	}
 
 	.section--hero {
-		/* por si quieres más ajustes específicos más adelante */
+		/* micro aire entre header y tarjeta */
+		margin-top: 0.25rem;
 	}
 </style>

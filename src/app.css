@@ -44,13 +44,16 @@
 
 	--header-height-mobile: 64px;
 	--header-height-desktop: 80px;
-	--header-offset: 64px;
+	--header-offset: 72px;
+	--page-padding-x: 1rem;
+
+	--layout-max-width: 900px;
 }
 
 @media (min-width: 768px) {
 	:root {
 		--page-padding-x: 2rem;
-		--header-offset: 80px; /* un poco más en desktop */
+		--header-offset: 80px;
 	}
 }
 /* DARK: se activa solo si el sistema está en modo oscuro */

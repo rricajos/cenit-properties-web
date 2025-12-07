@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Logo from './Logo.svelte';
 	import NavLinks, { type NavLink } from './NavLinks.svelte';
 
@@ -7,9 +8,29 @@
 		{ href: '#proyectos', label: 'Proyectos' },
 		{ href: '#contacto', label: 'Contacto' }
 	];
+
+	let headerEl: HTMLElement;
+
+	function updateHeaderOffset() {
+		if (!headerEl) return;
+		const h = headerEl.offsetHeight;
+		// Lo guardamos como variable CSS global
+		document.documentElement.style.setProperty('--header-offset', `${h}px`);
+	}
+
+	onMount(() => {
+		updateHeaderOffset();
+
+		const resizeHandler = () => updateHeaderOffset();
+		window.addEventListener('resize', resizeHandler);
+
+		return () => {
+			window.removeEventListener('resize', resizeHandler);
+		};
+	});
 </script>
 
-<header class="site-header">
+<header class="site-header" bind:this={headerEl}>
 	<div class="site-header__inner">
 		<Logo />
 
@@ -30,20 +51,21 @@
 		z-index: 40;
 		background: var(--color-bg);
 		backdrop-filter: blur(6px);
-		border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
 	}
 
 	.site-header__inner {
 		max-width: var(--layout-max-width);
 		margin: 0 auto;
 		padding-inline: var(--page-padding-x);
-		padding-block: 0.6rem;
+		padding-block: 0.55rem; /* +0.1rem respecto a antes */
 		display: flex;
 		align-items: center;
-		gap: 1.25rem;
+		justify-content: space-between;
+		gap: 0.75rem;
 	}
 
-	/* logo left – nav center – cta right */
 	.site-header__nav {
 		flex: 1;
 		display: flex;
@@ -60,13 +82,16 @@
 		font-weight: 500;
 	}
 
-	/* CTA: solo layout, la estética viene de .btn .btn-primary global */
+	/* CTA: dejamos que parezca un botón "de verdad", no un chip enano */
 	.site-header__cta {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		text-decoration: none;
 		white-space: nowrap;
+		padding-block: 0.55rem; /* más alto */
+		padding-inline: 1.4rem; /* un pelín más ancho */
+		font-size: 0.9rem; /* igual que el hero */
 	}
 
 	.site-header__cta:hover,
@@ -74,27 +99,22 @@
 		opacity: 0.92;
 	}
 
-	/* ===== MOBILE ===== */
+	/* MOBILE */
 	@media (max-width: 767px) {
 		.site-header__inner {
-			padding-block: 0.55rem;
-			gap: 0.6rem;
+			padding-block: 0.6rem; /* header entero algo más alto */
+			padding-inline: 1.5rem; /* como tú proponías */
 		}
 
-		/* Solo logo + botón, nav oculto */
 		.site-header__nav {
-			display: none;
-		}
-
-		:global(.logo__text) {
-			font-size: 1rem;
+			display: none; /* solo logo + CTA */
 		}
 	}
 
-	/* ===== DESKTOP ===== */
+	/* DESKTOP */
 	@media (min-width: 768px) {
 		.site-header__inner {
-			padding-block: 0.9rem;
+			padding-block: 0.8rem;
 		}
 	}
 </style>

@@ -18,6 +18,13 @@
 		font-weight: 800;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		font-size: 1.1rem;
+		font-size: 1.05rem;
+	}
+
+	@media (max-width: 767px) {
+		.logo__text {
+			font-size: 0.95rem; /* más contenido en mobile */
+			letter-spacing: 0.07em; /* un poco menos de tracking */
+		}
 	}
 </style>
