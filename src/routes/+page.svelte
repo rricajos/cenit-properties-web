@@ -160,16 +160,11 @@
 
 	.section {
 		padding-inline: 0.1rem;
+		max-width: 1024px;
+		margin: 0 auto;
 	}
 
 	.section--hero {
-		padding-top: 2rem;
-	}
-
-	@media (min-width: 1024px) {
-		.section {
-			padding-inline: 3rem;
-		}
 	}
 
 	.btn {
@@ -181,12 +176,11 @@
 	}
 
 	.btn-primary {
-		background: #000;
-		color: #fff;
+		background: var(--color-primary);
+		color: var(--color-text);
 	}
-
 	.btn-outline {
-		background: #fff;
-		color: #000;
+		background: transparent;
+		color: var(--color-text);
 	}
 </style>

@@ -80,7 +80,7 @@
 		margin: 0;
 		line-height: 1.7;
 		font-size: 0.95rem;
-		color: #333;
+		color: var(--color-text);
 	}
 
 	.hero-actions {

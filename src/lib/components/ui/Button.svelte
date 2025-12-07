@@ -41,7 +41,7 @@
 
 	.btn--primary {
 		background: var(--color-primary);
-		color: #fff;
+		color: var(--color-text);
 	}
 
 	.btn--primary:hover:not(:disabled) {

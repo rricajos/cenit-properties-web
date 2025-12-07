@@ -1,38 +1,50 @@
 :root {
 	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
+	/* LIGHT por defecto */
 	--color-bg: #e3dfdc;
-	--color-bg-dark: #1f1a17;
 	--color-card: #f5f2ef;
-	--color-text: #2c241f;
+	--color-text: #0f1111;
 	--color-text-muted: #7a726b;
-	--color-primary: #c88f5a;
+
+	--color-primary: #ffd814;
 	--accent-soft: #f4f0ff;
 	--accent-strong: #4b2aad;
-
-	--radius-sm: 4px;
-	--radius-md: 8px;
-
-	--space-xs: 0.4rem;
-	--space-sm: 0.8rem;
-	--space-md: 1.6rem;
-	--space-lg: 2.4rem;
 }
+
+/* DARK: se activa solo si el sistema está en modo oscuro */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #12100f;
+		--color-card: #1d1916;
+		--color-text: #f5eee8;
+		--color-text-muted: #b0a59a;
+
+		--color-primary: #ffd814;
+		--accent-soft: #241b33;
+		--accent-strong: #d2c4ff;
+	}
+}
+
+/* Reset básico */
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
 }
+
+html,
 body {
-	margin: 0; /* 👈 aquí quitas el margen por defecto */
-	font-family:
-		system-ui,
-		-apple-system,
-		BlinkMacSystemFont,
-		'Segoe UI',
-		sans-serif;
-	background-color: #f5f5f5;
-	color: #111;
+	margin: 0;
+	padding: 0;
+}
+
+/* 👇 Aquí ya te integras con el nav */
+body {
+	font-family: var(--font-sans);
+	background-color: var(--color-bg); /* fondo según tema */
+	color: var(--color-text); /* texto según tema */
+	color-scheme: light dark; /* integra también scrollbars, inputs, etc. */
 }
 
 figure {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let text = 'DISEÑO';
+	export let text = 'CENIT PROPERTIES';
 	export let href = '/';
 </script>
 

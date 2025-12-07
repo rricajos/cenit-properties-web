@@ -47,6 +47,6 @@
 	.feature-card__text {
 		font-size: 0.9rem;
 		line-height: 1.5;
-		color: #444;
+		color: var(--color-text);
 	}
 </style>

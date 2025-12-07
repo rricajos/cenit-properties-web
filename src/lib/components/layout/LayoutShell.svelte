@@ -30,8 +30,8 @@
 <style>
 	.l-shell {
 		min-height: 100vh;
-		background: #d9d9d9; /* gris exterior (margen) */
-		color: #222;
+		background: var(--color-bg);
+		color: var(--color-text);
 	}
 
 	.l-shell--framed {
