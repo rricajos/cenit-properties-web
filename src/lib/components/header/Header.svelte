@@ -36,7 +36,7 @@
 	<!-- BARRA INFERIOR FIJA (solo móviles) -->
 	<div class="site-header__bottom-bar">
 		<div class="site-header__inner site-header__inner--bottom">
-			<button class="site-header__cta" type="button"> Contactar </button>
+			<button class="site-header__cta" type="button"> Contactar Ahora </button>
 
 			<div class="site-header__hamburger">
 				<HamburgerButton open={isOpen} on:toggle={toggleMenu} />
