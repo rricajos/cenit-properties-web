@@ -1,14 +1,21 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	export let open = false;
-	export let label = 'Abrir menú de navegación';
+
+	const dispatch = createEventDispatcher();
+
+	function handleClick() {
+		dispatch('toggle'); // avisamos al padre
+	}
 </script>
 
 <button
 	type="button"
-	class:hamburger--open={open}
-	class="hamburger"
-	aria-label={label}
+	class="hamburger {open ? 'hamburger--open' : ''}"
+	aria-label={open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
 	aria-expanded={open}
+	on:click={handleClick}
 >
 	<span class="hamburger__line"></span>
 	<span class="hamburger__line"></span>
