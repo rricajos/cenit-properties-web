@@ -8,7 +8,34 @@
 	import NumberedFeatureGrid from '$lib/components/features/NumberedFeatureGrid.svelte';
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
 	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
+	import FaqSection from '$lib/components/sections/FaqSection.svelte';
 	import type { ComponentProps } from 'svelte';
+	import type { FaqItem } from '$lib/components/sections/FaqSection.svelte';
+
+	type Faq = FaqItem;
+
+	const faqs: Faq[] = [
+		{
+			question: '¿Qué incluye exactamente vuestro servicio integral inmobiliario?',
+			answer:
+				'Podemos acompañarte desde la valoración inicial del inmueble hasta la reforma, home staging, comercialización, negociación y cierre, incluyendo la parte fiscal y documental.'
+		},
+		{
+			question: '¿Trabajáis solo con viviendas para vender o también para alquilar?',
+			answer:
+				'Trabajamos tanto con inmuebles en venta como en alquiler. En ambos casos analizamos qué mejoras tienen más impacto en la revalorización y en el tiempo de comercialización.'
+		},
+		{
+			question: '¿Puedo contratar solo la parte de diseño y reforma sin la venta?',
+			answer:
+				'Sí. Podemos encargarnos únicamente del proyecto de interiorismo y reforma, aunque no gestionemos la venta. Nos adaptamos al punto en el que te encuentres con tu inmueble.'
+		},
+		{
+			question: '¿Cómo es el proceso de inicio si quiero vender mi piso con reforma?',
+			answer:
+				'Empezamos con una visita y una valoración estimada “tal como está” y “después de la intervención”. A partir de ahí definimos alcance de la reforma, presupuesto y calendario antes de ejecutar.'
+		}
+	];
 
 	// Tipo local para los items del mosaico (igual que en MosaicSection)
 	type MosaicItemConfig = Omit<ComponentProps<typeof MosaicItem>, 'mobileOrder'> & {
@@ -90,6 +117,7 @@
 		icon?: string;
 		title: string;
 		text: string;
+		href?: string;
 	};
 
 	type NumberedItem = {
@@ -98,25 +126,18 @@
 		text: string;
 	};
 
+	type GalleryImage = {
+		src: string;
+		alt: string;
+	};
+
 	// Datos del hero principal
 	const hero = {
 		title: 'Logramos el cénit de los inmuebles en el mercado',
 		description:
 			'La casa está rodeada por un jardín y hay muchos vecinos diferentes en la zona. La casa promedio está creada para una sola familia.',
-		// Rutas de imágenes de ejemplo; pon aquí las de tu carpeta static/
 		mainImage: '/images/hero/cenit-hero.jpg'
-		// collageImages: [
-		// 	'/images/hero/collage-1.jpg',
-		// 	'/images/hero/collage-2.jpg',
-		// 	'/images/hero/collage-3.jpg'
-		// ]
 	};
-
-	const stripImages = [
-		{ src: '/images/cenit-strip-1.jpg', alt: 'Detalle salón reformado' },
-		{ src: '/images/cenit-strip-2.jpg', alt: 'Cocina reformada' },
-		{ src: '/images/cenit-strip-3.jpg', alt: 'Dormitorio luminoso' }
-	];
 
 	const tags = ['Diseños · Reformas · Asesorías'];
 
@@ -126,7 +147,7 @@
 			icon: 'rocket',
 			title: 'Proyectos que revalorizan',
 			text: 'Seleccionamos, reformamos y preparamos cada inmueble para que destaque en el mercado y aumente su valor real y percibido.',
-			href: '#interiores' // o a la sección de proyectos que prefieras
+			href: '#interiores'
 		},
 		{
 			icon: 'medal',
@@ -156,6 +177,25 @@
 		}
 	];
 
+	// Galería "Más de 50 ideas de diseño de interiores"
+	const interiorGalleryText =
+		'Te acompañamos desde la idea hasta el último detalle decorativo. Creamos combinaciones de colores, texturas y mobiliario que hacen que cada estancia sea única y preparada para venderse mejor.';
+
+	const interiorGalleryImages: GalleryImage[] = [
+		{
+			src: '/images/sections/interiores/interior-1.jpg',
+			alt: 'Salón luminoso con sofá claro y detalles en madera'
+		},
+		{
+			src: '/images/sections/interiores/interior-2.jpg',
+			alt: 'Cocina moderna con isla central y luz natural'
+		},
+		{
+			src: '/images/sections/interiores/interior-3.jpg',
+			alt: 'Dormitorio acogedor con textiles cálidos y lámparas de diseño'
+		}
+	];
+
 	// Bloque "Casa y apartamento"
 	const casaApartamento = {
 		title: 'Casa y apartamento',
@@ -166,7 +206,7 @@
 </script>
 
 <main>
-	<!-- 1. HERO principal: imagen grande + texto + collage de 3 imágenes -->
+	<!-- 1. HERO principal -->
 	<section id="inicio" class="section section--hero">
 		<HeroSplit
 			eyebrow="CÉNIT · Servicio integral inmobiliario"
@@ -189,9 +229,8 @@
 		<FeatureCardGrid items={featureItems} />
 	</section>
 
-	<!-- 3. Mosaico 2x2: Ideas de diseño / Planes de casa (lo usamos como SERVICIOS) -->
+	<!-- 3. Servicios en mosaico -->
 	<section id="servicios" class="section section--mosaic">
-		<!-- Dentro de MosaicSection ya maquetas las 4 celdas según la maqueta -->
 		<MosaicSection id="mosaic" items={serviciosItems} />
 	</section>
 
@@ -205,7 +244,11 @@
 
 	<!-- 5. Mosaico grande: "Más de 50 ideas de diseño de interiores" -->
 	<section id="interiores" class="section section--gallery">
-		<GalleryWithTextSection title="Más de 50 ideas de diseño de interiores" />
+		<GalleryWithTextSection
+			title="Más de 50 ideas de diseño de interiores"
+			text={interiorGalleryText}
+			images={interiorGalleryImages}
+		/>
 	</section>
 
 	<!-- 6. "Casa y apartamento" + 2 imágenes -->
@@ -223,7 +266,16 @@
 		<NumberedFeatureGrid items={numberedItems} />
 	</section>
 
-	<!-- 8. Contacto + mapa -->
+	<!-- 8. Preguntas frecuentes -->
+	<section id="faq" class="section section--faq">
+		<FaqSection
+			title="Preguntas frecuentes"
+			intro="Resolvemos algunas de las dudas más habituales sobre cómo trabajamos y cómo podemos ayudarte a revalorizar tu inmueble."
+			items={faqs}
+		/>
+	</section>
+
+	<!-- 9. Contacto + mapa -->
 	<section id="contacto" class="section section--contact">
 		<ContactSection />
 	</section>
@@ -243,5 +295,6 @@
 	}
 
 	.section--hero {
+		/* por si luego quieres estilos específicos */
 	}
 </style>
