@@ -1,4 +1,3 @@
-<!-- src/lib/components/footer/FooterColumn.svelte -->
 <script lang="ts">
 	export let title: string;
 	export let body: string | undefined = undefined;
@@ -32,12 +31,12 @@
 		font-size: 0.78rem;
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
-		color: var(--accent-strong, var(--color-primary));
+		font-weight: bold;
 	}
 
 	.footer-column__body {
 		line-height: 1.7;
+		color: #f9f8fe; /* mismo blanco para todo el body del footer */
 		opacity: 0.9;
-		color: var(--color-primary-contrast, #f9f8fe);
 	}
 </style>

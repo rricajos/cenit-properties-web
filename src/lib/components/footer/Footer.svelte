@@ -1,8 +1,8 @@
-<!-- src/lib/components/footer/Footer.svelte -->
 <script lang="ts">
 	import FooterColumns from './FooterColumns.svelte';
 	import FooterColumn from './FooterColumn.svelte';
 	import Logo from '$lib/components/header/Logo.svelte';
+	import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook, Youtube } from 'lucide-svelte';
 
 	const currentYear = new Date().getFullYear();
 </script>
@@ -10,10 +10,27 @@
 <footer class="site-footer">
 	<div class="site-footer__inner">
 		<div class="site-footer__brand">
-			<Logo />
-			<p class="site-footer__tagline">
-				Especialistas en revalorizar inmuebles a través de diseño, reforma y asesoría integral.
-			</p>
+			<div style="max-width: 26rem;">
+				<Logo />
+				<p class="site-footer__tagline">
+					Especialistas en revalorizar inmuebles a través de diseño, reforma y asesoría integral.
+				</p>
+			</div>
+
+			<div class="site-footer__social">
+				<a href="#" aria-label="Instagram">
+					<Instagram class="site-footer__social-icon" />
+				</a>
+				<a href="#" aria-label="LinkedIn">
+					<Linkedin class="site-footer__social-icon" />
+				</a>
+				<a href="#" aria-label="Facebook">
+					<Facebook class="site-footer__social-icon" />
+				</a>
+				<a href="#" aria-label="YouTube">
+					<Youtube class="site-footer__social-icon" />
+				</a>
+			</div>
 		</div>
 
 		<FooterColumns>
@@ -36,10 +53,25 @@
 			</FooterColumn>
 
 			<FooterColumn title="Contacto">
-				<ul class="site-footer__list">
-					<li>info@cenitproperties.com</li>
-					<li>+34 600 000 000</li>
-					<li>Gràcia, Barcelona</li>
+				<ul class="site-footer__list site-footer__list--contact">
+					<li class="site-footer__contact-row">
+						<span class="site-footer__icon-wrap">
+							<Mail class="site-footer__icon" />
+						</span>
+						<a href="mailto:info@cenitproperties.com">info@cenitproperties.com</a>
+					</li>
+					<li class="site-footer__contact-row">
+						<span class="site-footer__icon-wrap">
+							<Phone class="site-footer__icon" />
+						</span>
+						<a href="tel:+34600000000">+34 600 000 000</a>
+					</li>
+					<li class="site-footer__contact-row">
+						<span class="site-footer__icon-wrap">
+							<MapPin class="site-footer__icon" />
+						</span>
+						<span>Gràcia, Barcelona</span>
+					</li>
 				</ul>
 			</FooterColumn>
 		</FooterColumns>
@@ -57,10 +89,9 @@
 
 <style>
 	.site-footer {
-		/* SIN margen, así no aparece el fondo blanco del body */
 		margin-top: 0;
-		background: #121318; /* banda oscura fija, la que tenías al principio */
-		color: #f9f8fe;
+		background: #121318;
+		color: #f9f8fe; /* color base de todo el texto */
 	}
 
 	.site-footer__inner {
@@ -72,16 +103,18 @@
 		gap: 2.5rem;
 	}
 
-	/* Marca + tagline */
+	/* Marca + tagline + redes */
 	.site-footer__brand {
-		max-width: 26rem;
 		display: flex;
-		flex-direction: column;
-		gap: 0.65rem;
+		flex-direction: row;
+		flex-flow: row wrap;
+		justify-content: space-between;
+
+		align-items: flex-start;
+		gap: 0.8rem;
 	}
 
-	/* Forzamos color del logo y anulamos el azul de enlace */
-	.site-footer__brand :global(.logo) {
+	.site-footer__brand :global(a.logo) {
 		color: inherit;
 		text-decoration: none;
 	}
@@ -90,16 +123,47 @@
 		color: #f9f8fe;
 	}
 
-	/* tagline */
 	.site-footer__tagline {
 		margin: 0;
 		font-size: 0.9rem;
 		line-height: 1.6;
+		color: #f9f8fe;
 		opacity: 0.9;
+	}
+
+	/* Redes sociales */
+	.site-footer__social {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-top: 0.1rem;
+	}
+
+	.site-footer__social a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.1rem;
+		height: 2.1rem;
+		border-radius: 999px;
+		background: rgba(249, 248, 254, 0.04);
+	}
+
+	.site-footer__social a:link,
+	.site-footer__social a:visited {
 		color: #f9f8fe;
 	}
 
-	/* listas de enlaces */
+	.site-footer__social a:hover {
+		background: rgba(249, 248, 254, 0.12);
+	}
+
+	.site-footer__social-icon {
+		width: 1.2rem;
+		height: 1.2rem;
+	}
+
+	/* Listas de enlaces */
 	.site-footer__list {
 		list-style: none;
 		margin: 0;
@@ -111,8 +175,12 @@
 		color: #f9f8fe;
 	}
 
+	.site-footer__list a:link,
+	.site-footer__list a:visited {
+		color: #f9f8fe; /* mata el morado de :visited */
+	}
+
 	.site-footer__list a {
-		color: inherit;
 		text-decoration: none;
 		opacity: 0.9;
 	}
@@ -122,13 +190,37 @@
 		text-decoration: underline;
 	}
 
-	/* foco accesible en enlaces del footer */
+	/* Fila de contacto con icono + texto */
+	.site-footer__list--contact {
+		gap: 0.5rem;
+	}
+
+	.site-footer__contact-row {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+	}
+
+	.site-footer__icon-wrap {
+		width: 1.25rem;
+		height: 1.25rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.site-footer__icon {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	/* Foco accesible en todos los enlaces del footer */
 	.site-footer a:focus-visible {
 		outline: 2px solid #f9f8fe;
 		outline-offset: 2px;
 	}
 
-	/* franja inferior */
+	/* Franja inferior */
 	.site-footer__bottom {
 		display: flex;
 		flex-wrap: wrap;
@@ -143,6 +235,7 @@
 
 	.site-footer__bottom p {
 		margin: 0;
+		color: #f9f8fe;
 	}
 
 	.site-footer__legal {
@@ -151,8 +244,12 @@
 		gap: 0.5rem;
 	}
 
+	.site-footer__legal a:link,
+	.site-footer__legal a:visited {
+		color: #f9f8fe;
+	}
+
 	.site-footer__legal a {
-		color: inherit;
 		text-decoration: none;
 	}
 

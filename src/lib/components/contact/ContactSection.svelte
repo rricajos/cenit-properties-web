@@ -22,7 +22,7 @@
 <style>
 	/* Fondo de banda a todo ancho */
 	.contact-section {
-		background: var(--accent-soft, #ece9ff);
+		background: var(--color-card-muted, #ece9ff);
 		padding-block: 4rem;
 		color: var(--color-text);
 	}
