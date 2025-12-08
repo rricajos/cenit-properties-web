@@ -2,6 +2,7 @@
 	import LayoutShell from '$lib/components/layout/LayoutShell.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
+	import StickyCtaBar from '$lib/components/layout/StickyCtaBar.svelte';
 	import '../app.css';
 </script>
 
@@ -17,3 +18,6 @@
 		<Footer />
 	</svelte:fragment>
 </LayoutShell>
+
+<!-- Barra fija global (solo móviles, lógica dentro del propio componente) -->
+<StickyCtaBar />

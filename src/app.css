@@ -1,55 +1,75 @@
 :root {
+	/* ========================
+	   TIPOGRAFÍA Y BASE
+	======================== */
 	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-	/* PALETA BASE – LIGHT por defecto */
+	/* ========================
+	   COLORES – LIGHT (por defecto)
+	======================== */
 	--color-bg: #f9f8fe;
 	--color-card: #ffffff;
-	--card-shadow: 0 10px 30px #0000000f;
+	--color-card-muted: #eeeeee;
+
 	--color-text: #121318;
 	--color-text-muted: #7a726b;
-	--color-card-muted: #eee;
 
-	/* primary = accent principal */
-	--color-primary: #4b2aad; /* indigo/morado sobrio */
-	--color-primary-contrast: #f9f8fe; /* texto del botón, mismo tono de fondo */
+	--color-primary: #4b2aad; /* acento principal */
+	--color-primary-contrast: #f9f8fe; /* texto en botón primario */
 
-	/* acentos secundarios (tags, chips, etc.) */
-	--accent-soft: #ece9ff; /* versión suavizada del primary */
+	/* Acentos secundarios (tags, chips, detalles) */
+	--accent-soft: #ece9ff;
 	--accent-strong: #4b2aad;
-
-	/* ===== TOKENS SEMÁNTICOS EXTRA ===== */
 
 	/* Superficies y bordes */
 	--color-surface: var(--color-card);
-	--color-surface-elevated: #f3f0ff; /* fondos tipo bloques/FAQs */
+	--color-surface-elevated: #f3f0ff; /* bloques, FAQs, etc. */
 	--color-border-subtle: #e3dde0;
 
-	/* Accent semántico (para texto pequeño, etiquetas, eye-brows) */
+	/* Accent semántico (chips, eyebrow, etc.) */
 	--color-accent: var(--color-primary);
 
-	/* Radios */
+	/* ========================
+	   RADIOS
+	======================== */
 	--radius-sm: 0.5rem;
 	--radius-md: 1rem;
 	--radius-lg: 1.5rem;
 	--radius-pill: 999px;
 
-	/* Sombras */
+	/* ========================
+	   SOMBRAS
+	======================== */
+	--card-shadow: 0 10px 30px #0000000f;
 	--shadow-soft: var(--card-shadow);
 	--shadow-elevated: 0 18px 40px rgba(15, 23, 42, 0.12);
 
-	/* Botones */
+	/* ========================
+	   BOTONES
+	======================== */
 	--btn-radius: 999px;
-	--btn-padding-y: 0.55rem; /* antes 0.7rem */
-	--btn-padding-x: 1.4rem; /* antes 1.6rem */
-	--btn-font-size: 0.88rem; /* un pelín más pequeño */
+	--btn-padding-y: 0.55rem;
+	--btn-padding-x: 1.4rem;
+	--btn-font-size: 0.88rem;
 
+	/* ========================
+	   LAYOUT / HEADER
+	======================== */
 	--header-height-mobile: 64px;
 	--header-height-desktop: 80px;
+
+	/* Offset para anclas si hay header fijo */
 	--header-offset: 72px;
+
+	/* Padding horizontal base de página */
 	--page-padding-x: 1rem;
 
+	/* Ancho máximo de contenido */
 	--layout-max-width: 1024px;
+	--split-gap-default: 3rem;
 }
+
+/* Ajustes responsive globales de layout */
 @media (max-width: 767px) {
 	:root {
 		--header-offset: 0;
@@ -62,33 +82,48 @@
 		--header-offset: 80px;
 	}
 }
-/* DARK: se activa solo si el sistema está en modo oscuro */
+
+/* ========================
+   TEMA OSCURO (según sistema)
+======================== */
 @media (prefers-color-scheme: dark) {
 	:root {
+		/* Fondo y tarjetas */
 		--color-bg: #121318;
 		--color-card: #181922;
+		--color-card-muted: #242331; /* superficie secundaria más clara que el fondo */
+
+		/* Texto */
 		--color-text: #f9f8fe;
 		--color-text-muted: #b0a59a;
 
-		/* primary adaptado a dark: más claro */
-		--color-primary: #d2c4ff; /* lavanda claro */
-		--color-primary-contrast: #121318; /* texto oscuro dentro del botón */
+		/* Primary adaptado a dark */
+		--color-primary: #d2c4ff;
+		--color-primary-contrast: #121318;
 
+		/* Acentos */
 		--accent-soft: #241b33;
 		--accent-strong: #d2c4ff;
 
-		/* superficies y bordes equivalentes en dark */
+		/* Superficies y bordes en dark */
 		--color-surface: var(--color-card);
 		--color-surface-elevated: #1f2030;
 		--color-border-subtle: #2b2836;
 
+		/* Accent semántico */
 		--color-accent: var(--color-primary);
 
+		/* Sombras en dark (más profundas) */
+		--card-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+		--shadow-soft: var(--card-shadow);
 		--shadow-elevated: 0 18px 40px rgba(0, 0, 0, 0.6);
+		--sticky-cta-bg: rgba(18, 19, 24, 0.94);
 	}
 }
 
-/* Reset básico */
+/* ========================
+   RESET BÁSICO
+======================== */
 *,
 *::before,
 *::after {
@@ -113,23 +148,32 @@ figure {
 	margin: 0;
 }
 
-/* Botones genéricos */
+/* ========================
+   BOTONES GENÉRICOS
+======================== */
 .btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
 	border-radius: var(--btn-radius);
 	padding: var(--btn-padding-y) var(--btn-padding-x);
 	font-size: var(--btn-font-size);
+
 	border: 1px solid transparent;
 	cursor: pointer;
+	text-decoration: none;
+	white-space: nowrap;
 }
 
 .btn-primary {
-	background: var(--color-primary);
+	background-color: var(--color-primary);
 	color: var(--color-primary-contrast);
 	box-shadow: var(--shadow-soft);
 }
 
 .btn-outline {
-	background: transparent;
+	background-color: transparent;
 	color: var(--color-text);
 	border-color: var(--color-text);
 }

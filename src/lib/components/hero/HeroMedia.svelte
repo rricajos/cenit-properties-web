@@ -19,18 +19,6 @@
 		display: block;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
-	}
-
-	/* En móvil, altura natural de la imagen para evitar “columnas” gigantes */
-	@media (max-width: 900px) {
-		.hero-media {
-			height: auto;
-		}
-
-		.hero-media img {
-			height: auto;
-			object-fit: cover;
-		}
+		object-fit: cover; /* rellena el figure sin deformar; solo recorta */
 	}
 </style>

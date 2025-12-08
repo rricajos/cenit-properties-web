@@ -4,9 +4,10 @@
 	export let eyebrow: string | null = null;
 	export let tag: keyof HTMLElementTagNameMap = 'h1';
 	export let tags: string[] = [];
+	export let showCta = true;
 </script>
 
-<div class="hero-content">
+<div class={`hero-content ${showCta ? '' : 'hero-content--no-cta'}`}>
 	{#if eyebrow}
 		<p class="hero-eyebrow">{eyebrow}</p>
 	{/if}
@@ -27,8 +28,7 @@
 		{description}
 	</p>
 
-	<!-- Estos botones serán sticky en móvil -->
-	<div class="hero-actions">
+	<div class={`hero-actions ${showCta ? '' : 'hero-actions--hidden'}`}>
 		<slot />
 	</div>
 </div>
@@ -84,7 +84,6 @@
 		color: var(--color-text);
 	}
 
-	/* Desktop: botones normales abajo del texto */
 	.hero-actions {
 		display: flex;
 		gap: 0.75rem;
@@ -97,27 +96,35 @@
 		min-width: 0;
 	}
 
-	/* 📱 MÓVIL: convierte los botones en píldora sticky */
+	/* 👇 cuando el CTA está oculto, NO ocupa alto */
+	.hero-actions--hidden {
+		display: none;
+	}
+
 	@media (max-width: 767px) {
 		.hero-content {
 			position: relative;
-			/* deja hueco para que la píldora no pise el texto */
+			/* este padding extra era solo para la píldora sticky interna */
 			padding-bottom: 3.2rem;
 		}
 
-		.hero-actions {
+		/* solo sticky cuando hay CTA visible */
+		.hero-actions:not(.hero-actions--hidden) {
 			position: sticky;
 			top: calc(var(--header-offset, 0px) + 8px);
 			z-index: 30;
-
 			margin-top: 1rem;
-			margin-inline: -0.5rem; /* que respire un poco más ancho que la tarjeta */
+			margin-inline: -0.5rem;
 			padding: 0.5rem 0.7rem;
 			border-radius: 999px;
-
 			background: rgba(249, 248, 254, 0.95);
 			backdrop-filter: blur(16px);
 			box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+		}
+
+		/* cuando NO hay CTA, padding normal */
+		.hero-content--no-cta {
+			padding-bottom: 1.5rem;
 		}
 	}
 </style>

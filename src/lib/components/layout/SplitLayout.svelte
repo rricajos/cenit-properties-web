@@ -16,6 +16,7 @@
 	export let gap = '3rem';
 	export let stackAt = '768px';
 	export let className = '';
+	export let stack: 'sm' | 'md' | 'lg' = 'md';
 </script>
 
 <div
@@ -34,7 +35,7 @@
 	.c-split {
 		display: grid;
 		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-		column-gap: var(--split-gap);
+		column-gap: var(--split-gap, var(--split-gap-default));
 		row-gap: 2rem;
 	}
 
@@ -57,6 +58,22 @@
 	}
 	.c-split--reverse > .c-split__col {
 		direction: ltr; /* evitar que cambie el texto */
+	}
+
+	@media (max-width: 640px) {
+		.c-split--stack-sm {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 768px) {
+		.c-split--stack-md {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 1024px) {
+		.c-split--stack-lg {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	@media (max-width: 768px) {

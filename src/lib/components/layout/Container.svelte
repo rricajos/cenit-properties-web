@@ -21,8 +21,8 @@
 <style>
 	.c-container {
 		margin-inline: auto;
-		max-width: 1120px; /* ajusta según diseño */
-		padding-inline: 1.5rem;
+		max-width: var(--layout-max-width);
+		padding-inline: var(--page-padding-x);
 	}
 
 	.c-container--full {

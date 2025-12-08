@@ -9,7 +9,6 @@
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
 	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
 	import FaqSection from '$lib/components/sections/FaqSection.svelte';
-	import StickyCtaBar from '$lib/components/layout/StickyCtaBar.svelte';
 
 	import type { ComponentProps } from 'svelte';
 	import type { FaqItem } from '$lib/components/sections/FaqSection.svelte';
@@ -50,9 +49,9 @@
 			title: 'Inmobiliaria tradicional',
 			text: `Nuestro core es la compra-venta de inmuebles. Te ayudamos a encontrar la propiedad perfecta o a vender la tuya al mejor precio del mercado. Asesoramiento profesional en cada paso del proceso inmobiliario.
 
-• Valoración profesional de propiedades
-• Gestión completa de compra-venta
-• Asesoramiento legal y documental`
+	• Valoración profesional de propiedades
+	• Gestión completa de compra-venta
+	• Asesoramiento legal y documental`
 		},
 		{
 			variant: 'image',
@@ -70,9 +69,9 @@
 			title: 'Home Staging profesional',
 			text: `Preparamos tu propiedad para que se venda más rápido y al mejor precio. Diseño y decoración estratégica que resalta el potencial de cada espacio sin inversiones excesivas.
 
-• Decoración temporal para venta
-• Fotografía profesional incluida
-• Optimización de espacios`,
+	• Decoración temporal para venta
+	• Fotografía profesional incluida
+	• Optimización de espacios`,
 			flipOnMobile: true
 		},
 		{
@@ -80,9 +79,9 @@
 			title: 'Diseño y reforma integral',
 			text: `Proyectos de interiorismo completos y reformas rentables. Transformamos espacios en hogares funcionales y bonitos, optimizando cada euro invertido para maximizar el valor de tu propiedad.
 
-• Proyectos de diseño personalizados
-• Reformas con acabados de calidad
-• Gestión completa de obra`
+	• Proyectos de diseño personalizados
+	• Reformas con acabados de calidad
+	• Gestión completa de obra`
 		},
 		{
 			variant: 'image',
@@ -100,9 +99,9 @@
 			title: 'Asesoría fiscal completa',
 			text: `Gestión de todos los trámites fiscales y legales relacionados con tu operación inmobiliaria. Te acompañamos en cada paso para que no tengas que preocuparte de nada.
 
-• Gestión de impuestos inmobiliarios
-• Optimización fiscal de la operación
-• Tramitación completa de documentos`,
+	• Gestión de impuestos inmobiliarios
+	• Optimización fiscal de la operación
+	• Tramitación completa de documentos`,
 			flipOnMobile: true
 		}
 	];
@@ -236,12 +235,13 @@
 			eyebrow="CÉNIT · Servicio integral inmobiliario"
 			title="La inmobiliaria que lo hace todo"
 			description="
-        Somos una inmobiliaria diferente. No solo te ayudamos a comprar o vender tu
-        propiedad, también nos encargamos del home staging, el diseño interior, las
-        reformas necesarias y toda la gestión fiscal. Todo en un solo lugar."
+			Somos una inmobiliaria diferente. No solo te ayudamos a comprar o vender tu
+			propiedad, también nos encargamos del home staging, el diseño interior, las
+			reformas necesarias y toda la gestión fiscal. Todo en un solo lugar."
 			mainImage={hero.mainImage}
 			mainImageAlt="Salón luminoso reformado con estilo cálido"
 			{tags}
+			showCta={false}
 		>
 			<button class="btn btn-primary">Ver servicios</button>
 			<button class="btn btn-outline">Contactar</button>
@@ -320,12 +320,11 @@
 		padding-inline: var(--page-padding-x);
 		max-width: var(--layout-max-width);
 		margin: 0 auto;
-		scroll-margin-top: calc(var(--header-offset) + 8px);
 	}
 
 	.section--hero {
 		position: relative;
-		margin-top: 0.25rem;
+		margin-top: 0;
 	}
 
 	.section--contact {
@@ -355,8 +354,18 @@
 
 	@media (max-width: 768px) {
 		main {
-			gap: 1.75rem;
+			gap: 8rem;
 			padding-bottom: 4.5rem;
+		}
+	}
+
+	/* 👇 Solo en móvil rompemos el frame para que sea full-width */
+	@media (max-width: 767px) {
+		.section--hero {
+			max-width: none;
+			padding-inline: 0;
+			width: calc(100% + 0.5rem);
+			margin-inline: -0.25rem;
 		}
 	}
 </style>

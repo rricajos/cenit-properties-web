@@ -33,6 +33,7 @@
 <style>
 	.c-section {
 		width: 100%;
+		scroll-margin-top: calc(var(--header-offset) + 8px);
 	}
 
 	/* Espaciados verticales */
@@ -48,16 +49,20 @@
 
 	/* Fondos base: ajusta los colores a tu sistema */
 	.c-section--bg-default {
-		background: #e3e3e3; /* gris suave como el boceto */
+		background: var(--color-bg);
 	}
+
 	.c-section--bg-light {
-		background: #f5f5f5;
+		background: var(--color-surface-elevated);
 	}
+
 	.c-section--bg-dark {
-		background: #171717;
-		color: #f7f7f7;
+		background: var(--color-bg);
+		color: var(--color-text);
 	}
+
 	.c-section--bg-accent {
-		background: #cbb59f; /* tono arena, opcional para secciones */
+		background: var(--color-accent);
+		color: var(--color-primary-contrast);
 	}
 </style>

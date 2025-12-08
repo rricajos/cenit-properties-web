@@ -30,22 +30,17 @@
 <style>
 	.l-shell {
 		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
 		background: var(--color-bg);
 		color: var(--color-text);
 	}
 
+	.l-shell__main {
+		flex: 1 0 auto;
+	}
+
 	.l-shell--framed {
-		padding: 0.25rem;
-	}
-
-	.l-shell__header,
-	.l-shell__footer,
-	.l-shell__main {
-		/* el contenido interno usa el "gris claro" de las secciones */
-	}
-
-	.l-shell__main {
-		/* que el main ocupe el alto restante */
-		min-height: calc(100vh - 6rem); /* aprox. header+footer */
+		padding: 0 var(--layout-frame-padding, 0.25rem);
 	}
 </style>
