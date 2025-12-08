@@ -41,7 +41,7 @@
 	.hero-split {
 		background: var(--color-card);
 		border-radius: 1rem;
-		overflow: hidden;
+		/* 👇 nada de overflow aquí en general */
 		box-shadow: var(--card-shadow);
 	}
 
@@ -51,6 +51,8 @@
 		display: grid;
 		grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
 		align-items: stretch;
+		border-radius: inherit;
+		overflow: hidden; /* recorta imagen y tarjeta en desktop */
 	}
 
 	.hero-split__inner--right {
@@ -67,6 +69,9 @@
 		justify-content: center;
 	}
 
+	/* ======================
+	   MOBILE / TABLET
+	   ====================== */
 	@media (max-width: 900px) {
 		.hero-split__inner {
 			grid-template-columns: 1fr;
@@ -88,9 +93,10 @@
 		}
 	}
 
-	/* 👇 importante: en móvil no clipping, para que el sticky se vea bien */
+	/* 📱 Clave para que el sticky funcione:
+	   el contenedor que scrollea NO puede tener overflow oculto */
 	@media (max-width: 767px) {
-		.hero-split {
+		.hero-split__inner {
 			overflow: visible;
 		}
 	}

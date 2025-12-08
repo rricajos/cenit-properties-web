@@ -27,7 +27,7 @@
 		{description}
 	</p>
 
-	<!-- Estos botones se convierten en píldora sticky en móvil -->
+	<!-- Estos botones serán sticky en móvil -->
 	<div class="hero-actions">
 		<slot />
 	</div>
@@ -84,7 +84,7 @@
 		color: var(--color-text);
 	}
 
-	/* Desktop: botones normales */
+	/* Desktop: botones normales abajo del texto */
 	.hero-actions {
 		display: flex;
 		gap: 0.75rem;
@@ -97,22 +97,21 @@
 		min-width: 0;
 	}
 
-	/* MÓVIL: se convierten en píldora sticky bajo el header */
+	/* 📱 MÓVIL: convierte los botones en píldora sticky */
 	@media (max-width: 767px) {
 		.hero-content {
 			position: relative;
-			/* deja hueco para la píldora flotante */
+			/* deja hueco para que la píldora no pise el texto */
 			padding-bottom: 3.2rem;
 		}
 
 		.hero-actions {
 			position: sticky;
-			/* si header está oculto en móvil, header-offset será 0 */
 			top: calc(var(--header-offset, 0px) + 8px);
 			z-index: 30;
 
 			margin-top: 1rem;
-			margin-inline: -0.5rem; /* la píldora se ensancha un poco */
+			margin-inline: -0.5rem; /* que respire un poco más ancho que la tarjeta */
 			padding: 0.5rem 0.7rem;
 			border-radius: 999px;
 

@@ -243,7 +243,6 @@
 			mainImageAlt="Salón luminoso reformado con estilo cálido"
 			{tags}
 		>
-			<!-- ✅ estos botones son los que convertiremos en píldora sticky -->
 			<button class="btn btn-primary">Ver servicios</button>
 			<button class="btn btn-outline">Contactar</button>
 		</HeroSplit>
