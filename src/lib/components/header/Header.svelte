@@ -108,6 +108,11 @@
 			display: none; /* solo logo + CTA en móvil */
 		}
 	}
+	@media (max-width: 767px) {
+		.site-header {
+			display: none;
+		}
+	}
 
 	/* DESKTOP */
 	@media (min-width: 768px) {

@@ -1,3 +1,4 @@
+<!-- src/lib/components/hero/HeroSplit.svelte -->
 <script lang="ts">
 	import HeroMedia from './HeroMedia.svelte';
 	import HeroContent from './HeroContent.svelte';
@@ -45,13 +46,11 @@
 	}
 
 	.hero-split__inner {
-		box-shadow: var(--card-shadow);
 		max-width: 1200px;
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-		align-items: stretch; /* 👈 ESTIRAR LAS DOS COLUMNAS */
-		min-height: 420px; /* opcional: altura mínima del hero */
+		align-items: stretch;
 	}
 
 	.hero-split__inner--right {
@@ -68,25 +67,31 @@
 		justify-content: center;
 	}
 
-	/* RESPONSIVE */
 	@media (max-width: 900px) {
-		.hero-split {
-		}
-
 		.hero-split__inner {
-			grid-template-columns: minmax(0, 1fr);
+			grid-template-columns: 1fr;
+			min-height: auto;
+			gap: 1.4rem;
 		}
 
-		/* en móvil dejamos siempre imagen arriba y texto debajo */
 		.hero-split__inner--right,
 		.hero-split__inner--left {
 			direction: ltr;
 		}
+
+		.hero-split :global(.hero-media) {
+			height: clamp(180px, 35vh, 230px);
+		}
+
+		.hero-split__content {
+			margin-top: -2rem;
+		}
 	}
 
-	@media (max-width: 600px) {
-		.hero-split__inner {
-			gap: 1.5rem;
+	/* 👇 importante: en móvil no clipping, para que el sticky se vea bien */
+	@media (max-width: 767px) {
+		.hero-split {
+			overflow: visible;
 		}
 	}
 </style>

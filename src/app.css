@@ -50,6 +50,11 @@
 
 	--layout-max-width: 1024px;
 }
+@media (max-width: 767px) {
+	:root {
+		--header-offset: 0;
+	}
+}
 
 @media (min-width: 768px) {
 	:root {

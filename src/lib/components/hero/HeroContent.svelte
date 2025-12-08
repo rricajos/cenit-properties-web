@@ -27,7 +27,7 @@
 		{description}
 	</p>
 
-	<!-- Slot para botones -->
+	<!-- Estos botones se convierten en píldora sticky en móvil -->
 	<div class="hero-actions">
 		<slot />
 	</div>
@@ -61,9 +61,9 @@
 	.hero-tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.4rem; /* pequeña separación entre tags */
+		gap: 0.4rem;
 		padding: 0;
-		margin: 0.75rem 0 0; /* un poco de aire respecto al título */
+		margin: 0.75rem 0 0;
 		list-style: none;
 	}
 
@@ -72,9 +72,9 @@
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
 		padding: 0.3rem 0.8rem;
-		border-radius: 999px; /* efecto “tag” sencillo */
-		background: var(--accent-soft, #f4f0ff); /* color de fondo accent */
-		color: var(--accent-strong, #4b2aad); /* texto accent */
+		border-radius: 999px;
+		background: var(--accent-soft, #f4f0ff);
+		color: var(--accent-strong, #4b2aad);
 	}
 
 	.hero-description {
@@ -84,9 +84,41 @@
 		color: var(--color-text);
 	}
 
+	/* Desktop: botones normales */
 	.hero-actions {
 		display: flex;
 		gap: 0.75rem;
 		margin-top: 0.5rem;
+	}
+
+	.hero-actions :global(.btn) {
+		flex: 1;
+		text-align: center;
+		min-width: 0;
+	}
+
+	/* MÓVIL: se convierten en píldora sticky bajo el header */
+	@media (max-width: 767px) {
+		.hero-content {
+			position: relative;
+			/* deja hueco para la píldora flotante */
+			padding-bottom: 3.2rem;
+		}
+
+		.hero-actions {
+			position: sticky;
+			/* si header está oculto en móvil, header-offset será 0 */
+			top: calc(var(--header-offset, 0px) + 8px);
+			z-index: 30;
+
+			margin-top: 1rem;
+			margin-inline: -0.5rem; /* la píldora se ensancha un poco */
+			padding: 0.5rem 0.7rem;
+			border-radius: 999px;
+
+			background: rgba(249, 248, 254, 0.95);
+			backdrop-filter: blur(16px);
+			box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+		}
 	}
 </style>

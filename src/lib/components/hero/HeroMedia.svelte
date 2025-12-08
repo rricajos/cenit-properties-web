@@ -1,3 +1,4 @@
+<!-- src/lib/components/hero/HeroMedia.svelte -->
 <script lang="ts">
 	export let src: string;
 	export let alt = '';
@@ -10,7 +11,7 @@
 <style>
 	.hero-media {
 		width: 100%;
-		height: 100%; /* 👈 clave: ocupa todo el alto de la celda del grid */
+		height: 100%;
 		overflow: hidden;
 	}
 
@@ -18,6 +19,18 @@
 		display: block;
 		width: 100%;
 		height: 100%;
-		object-fit: cover; /* 👈 recorta sin deformar */
+		object-fit: cover;
+	}
+
+	/* En móvil, altura natural de la imagen para evitar “columnas” gigantes */
+	@media (max-width: 900px) {
+		.hero-media {
+			height: auto;
+		}
+
+		.hero-media img {
+			height: auto;
+			object-fit: cover;
+		}
 	}
 </style>

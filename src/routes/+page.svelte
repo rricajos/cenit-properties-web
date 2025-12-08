@@ -9,6 +9,7 @@
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
 	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
 	import FaqSection from '$lib/components/sections/FaqSection.svelte';
+	import StickyCtaBar from '$lib/components/layout/StickyCtaBar.svelte';
 
 	import type { ComponentProps } from 'svelte';
 	import type { FaqItem } from '$lib/components/sections/FaqSection.svelte';
@@ -44,7 +45,6 @@
 	};
 
 	const serviciosItems: MosaicItemConfig[] = [
-		// 1️⃣ Inmobiliaria tradicional (texto, imagen) → NO flip
 		{
 			variant: 'light',
 			title: 'Inmobiliaria tradicional',
@@ -59,8 +59,6 @@
 			src: '/images/sections/servicios/inmobiliaria-tradicional.jpg',
 			alt: 'Agente inmobiliario asesorando a una familia en el salón de su casa'
 		},
-
-		// 2️⃣ Home Staging (imagen, texto) → flip en móvil
 		{
 			variant: 'image',
 			src: '/images/sections/servicios/home-staging.jpg',
@@ -77,8 +75,6 @@
 • Optimización de espacios`,
 			flipOnMobile: true
 		},
-
-		// 3️⃣ Diseño y reforma integral (texto, imagen) → NO flip
 		{
 			variant: 'light',
 			title: 'Diseño y reforma integral',
@@ -93,8 +89,6 @@
 			src: '/images/sections/servicios/diseno-reforma-integral.jpg',
 			alt: 'Cocina reformada con muebles de madera y mucha luz natural'
 		},
-
-		// 4️⃣ Asesoría fiscal (imagen, texto) → flip en móvil
 		{
 			variant: 'image',
 			src: '/images/sections/servicios/asesoria-fiscal.jpg',
@@ -113,7 +107,6 @@
 		}
 	];
 
-	// Tipos de datos para las secciones que reciben arrays
 	type FeatureItem = {
 		icon?: string;
 		title: string;
@@ -132,7 +125,6 @@
 		alt: string;
 	};
 
-	// Datos del hero principal
 	const hero = {
 		title: 'Logramos el cénit de los inmuebles en el mercado',
 		description:
@@ -142,7 +134,6 @@
 
 	const tags = ['Diseños · Reformas · Asesorías'];
 
-	// Tarjetas PROYECTOS / PREMIOS / NUESTRO EQUIPO
 	const featureItems: FeatureItem[] = [
 		{
 			icon: 'rocket',
@@ -212,7 +203,6 @@
 		}
 	];
 
-	// Galería "Más de 50 ideas de diseño de interiores"
 	const interiorGalleryText =
 		'Te acompañamos desde la idea hasta el último detalle decorativo. Creamos combinaciones de colores, texturas y mobiliario que hacen que cada estancia sea única y preparada para venderse mejor.';
 
@@ -231,7 +221,6 @@
 		}
 	];
 
-	// Bloque "Casa y apartamento"
 	const casaApartamento = {
 		title: 'Casa y apartamento',
 		text: 'La casa promedio está creada para una sola familia. Si cree que comprar una casa en Pattaya es quizás más su estilo, hable con nosotros para conocer más sobre cada una de las opciones y formas de propiedad disponibles. El último tipo es el casa balsa construida cerca de la costa o de un río.',
@@ -247,13 +236,14 @@
 			eyebrow="CÉNIT · Servicio integral inmobiliario"
 			title="La inmobiliaria que lo hace todo"
 			description="
-      Somos una inmobiliaria diferente. No solo te ayudamos a comprar o vender tu
-      propiedad, también nos encargamos del home staging, el diseño interior, las
-      reformas necesarias y toda la gestión fiscal. Todo en un solo lugar."
+        Somos una inmobiliaria diferente. No solo te ayudamos a comprar o vender tu
+        propiedad, también nos encargamos del home staging, el diseño interior, las
+        reformas necesarias y toda la gestión fiscal. Todo en un solo lugar."
 			mainImage={hero.mainImage}
 			mainImageAlt="Salón luminoso reformado con estilo cálido"
 			{tags}
 		>
+			<!-- ✅ estos botones son los que convertiremos en píldora sticky -->
 			<button class="btn btn-primary">Ver servicios</button>
 			<button class="btn btn-outline">Contactar</button>
 		</HeroSplit>
@@ -323,8 +313,7 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
-		/* el header fijo ocupa justo este alto */
+		gap: 2.5rem;
 		padding-top: var(--header-offset);
 	}
 
@@ -332,12 +321,11 @@
 		padding-inline: var(--page-padding-x);
 		max-width: var(--layout-max-width);
 		margin: 0 auto;
-		/* para que al hacer click en nav no se corte el título */
 		scroll-margin-top: calc(var(--header-offset) + 8px);
 	}
 
 	.section--hero {
-		/* micro aire entre header y tarjeta */
+		position: relative;
 		margin-top: 0.25rem;
 	}
 
@@ -364,5 +352,12 @@
 		margin: 0;
 		font-size: clamp(1.4rem, 2.1vw, 1.8rem);
 		line-height: 1.2;
+	}
+
+	@media (max-width: 768px) {
+		main {
+			gap: 1.75rem;
+			padding-bottom: 4.5rem;
+		}
 	}
 </style>
