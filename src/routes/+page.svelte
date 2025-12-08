@@ -355,7 +355,6 @@
 	@media (max-width: 768px) {
 		main {
 			gap: 8rem;
-			padding-bottom: 4.5rem;
 		}
 	}
 

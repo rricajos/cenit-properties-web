@@ -1,11 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { MessageCircle, Mail, Phone } from 'lucide-svelte';
 
-	export let primaryLabel = 'Ver servicios';
-	export let primaryHref = '#servicios';
+	// WhatsApp (primary)
+	export let whatsappLabel = 'WhatsApp';
+	// Cambia este número por el real, sin espacios ni signos
+	export let whatsappHref = 'https://wa.me/34600000000';
 
-	export let secondaryLabel = 'Contactar';
-	export let secondaryHref = '#contacto';
+	// Email
+	export let emailLabel = 'Email';
+	export let emailHref = 'mailto:info@cenitproperties.com';
+
+	// Teléfono
+	export let phoneLabel = 'Llamar';
+	export let phoneHref = 'tel:+34600000000';
 
 	const MOBILE_BREAKPOINT = 768;
 
@@ -60,12 +68,28 @@
 	bind:this={el}
 	class={`sticky-cta ${isFloating ? 'sticky-cta--floating' : 'sticky-cta--docked'}`}
 >
-	<a href={primaryHref} class="btn btn-primary sticky-cta__btn">
-		{primaryLabel}
+	<!-- WhatsApp (primary) -->
+	<a href={whatsappHref} class="btn btn-primary sticky-cta__btn">
+		<span class="sticky-cta__icon">
+			<MessageCircle size={16} />
+		</span>
+		<span class="sticky-cta__label">{whatsappLabel}</span>
 	</a>
 
-	<a href={secondaryHref} class="btn btn-outline sticky-cta__btn">
-		{secondaryLabel}
+	<!-- Email -->
+	<a href={emailHref} class="btn btn-outline sticky-cta__btn">
+		<span class="sticky-cta__icon">
+			<Mail size={16} />
+		</span>
+		<span class="sticky-cta__label">{emailLabel}</span>
+	</a>
+
+	<!-- Teléfono -->
+	<a href={phoneHref} class="btn btn-outline sticky-cta__btn">
+		<span class="sticky-cta__icon">
+			<Phone size={16} />
+		</span>
+		<span class="sticky-cta__label">{phoneLabel}</span>
 	</a>
 </div>
 
@@ -74,12 +98,12 @@
 		z-index: 60;
 
 		display: flex;
-		gap: 0.75rem;
+		gap: 0.5rem;
 		align-items: center;
 		justify-content: center;
 
 		padding: 0.55rem 0.9rem;
-		border-radius: 999px;
+		border-radius: 0 0 1rem 1rem;
 
 		background: var(--sticky-cta-bg, rgba(249, 248, 254, 0.94));
 		backdrop-filter: blur(16px);
@@ -107,8 +131,24 @@
 
 	.sticky-cta__btn {
 		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35rem;
 		text-align: center;
 		white-space: nowrap;
+		font-size: 0.85rem;
+		padding-inline: 0.8rem; /* un pelín más compacto para que quepan 3 */
+	}
+
+	.sticky-cta__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.sticky-cta__label {
+		line-height: 1;
 	}
 
 	@media (min-width: 768px) {
