@@ -5,29 +5,36 @@
 	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 	/* ========================
-	   COLORES – LIGHT (por defecto)
+	   COLORES – LIGHT (por defecto, gama grises)
 	======================== */
-	--color-bg: #f9f8fe;
-	--color-card: #ffffff;
-	--color-card-muted: #eeeeee;
+	--color-bg: #f3f4f6; /* fondo general gris claro */
+	--color-card: #ffffff; /* tarjetas / superficies */
+	--color-card-muted: #e5e7eb; /* superficies secundarias */
 
-	--color-text: #121318;
-	--color-text-muted: #7a726b;
+	--color-text: #111827; /* texto principal (gris muy oscuro) */
+	--color-text-muted: #6b7280; /* texto secundario */
 
-	--color-primary: #4b2aad; /* acento principal */
-	--color-primary-contrast: #f9f8fe; /* texto en botón primario */
+	/* Primary ahora neutro (gris muy oscuro / casi negro) */
+	--color-primary: #111827;
+	--color-primary-contrast: #ffffff;
 
 	/* Acentos secundarios (tags, chips, detalles) */
-	--accent-soft: #ece9ff;
-	--accent-strong: #4b2aad;
+	--accent-soft: #e5e7eb;
+	--accent-strong: #111827;
 
 	/* Superficies y bordes */
 	--color-surface: var(--color-card);
-	--color-surface-elevated: #f3f0ff; /* bloques, FAQs, etc. */
-	--color-border-subtle: #e3dde0;
+	--color-surface-elevated: #e5e7eb;
+	--color-border-subtle: #d1d5db;
 
 	/* Accent semántico (chips, eyebrow, etc.) */
 	--color-accent: var(--color-primary);
+
+	/* Estados de formulario (bien/mal) */
+	--color-success: #16a34a;
+	--color-success-soft: #dcfce7;
+	--color-danger: #dc2626;
+	--color-danger-soft: #fee2e2;
 
 	/* ========================
 	   RADIOS
@@ -89,35 +96,41 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		/* Fondo y tarjetas */
-		--color-bg: #121318;
-		--color-card: #181922;
-		--color-card-muted: #242331; /* superficie secundaria más clara que el fondo */
+		--color-bg: #020617;
+		--color-card: #020617;
+		--color-card-muted: #111827;
 
 		/* Texto */
-		--color-text: #f9f8fe;
-		--color-text-muted: #b0a59a;
+		--color-text: #f9fafb;
+		--color-text-muted: #9ca3af;
 
-		/* Primary adaptado a dark */
-		--color-primary: #d2c4ff;
-		--color-primary-contrast: #121318;
+		/* Primary adaptado a dark (gris claro) */
+		--color-primary: #e5e7eb;
+		--color-primary-contrast: #020617;
 
 		/* Acentos */
-		--accent-soft: #241b33;
-		--accent-strong: #d2c4ff;
+		--accent-soft: #111827;
+		--accent-strong: #e5e7eb;
 
 		/* Superficies y bordes en dark */
 		--color-surface: var(--color-card);
-		--color-surface-elevated: #1f2030;
-		--color-border-subtle: #2b2836;
+		--color-surface-elevated: #020617;
+		--color-border-subtle: #1f2937;
 
 		/* Accent semántico */
 		--color-accent: var(--color-primary);
 
-		/* Sombras en dark (más profundas) */
+		/* Estados de formulario en dark */
+		--color-success: #22c55e;
+		--color-success-soft: #052e16;
+		--color-danger: #f97316; /* un poco más cálido para dark */
+		--color-danger-soft: #450a0a;
+
+		/* Sombras en dark */
 		--card-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
 		--shadow-soft: var(--card-shadow);
 		--shadow-elevated: 0 18px 40px rgba(0, 0, 0, 0.6);
-		--sticky-cta-bg: rgba(18, 19, 24, 0.94);
+		--sticky-cta-bg: rgba(2, 6, 23, 0.94);
 	}
 }
 

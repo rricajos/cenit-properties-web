@@ -32,7 +32,7 @@
 <style>
 	.mosaic-section {
 		width: 100%;
-		border-radius: 1rem;
+
 		overflow: hidden;
 	}
 

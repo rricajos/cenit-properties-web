@@ -58,7 +58,7 @@
 	/* Variante imagen: que se sienta como “tarjeta premium” */
 	.mosaic-item--image {
 		background: var(--color-card);
-		border-radius: var(--radius-lg, 1.25rem);
+
 		box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
 		transition:
 			box-shadow 220ms ease-out,
@@ -68,9 +68,8 @@
 
 	/* Texto claro/oscuro, sin cambios fuertes */
 	.mosaic-item--light {
-		background: var(--color-card);
+		background: var(--color-bg);
 		color: var(--color-text);
-		border-radius: var(--radius-lg, 1.25rem);
 	}
 
 	.mosaic-item--dark {
@@ -118,7 +117,6 @@
 		.mosaic-item--image:hover,
 		.mosaic-item--image:focus-within {
 			box-shadow: 0 22px 48px rgba(15, 23, 42, 0.32);
-			transform: translateY(-3px);
 		}
 
 		.mosaic-item--image:hover .mosaic-item__image,

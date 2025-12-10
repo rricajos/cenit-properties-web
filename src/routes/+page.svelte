@@ -9,6 +9,40 @@
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
 	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
 	import FaqSection from '$lib/components/sections/FaqSection.svelte';
+	import ProjectsCarousel from '$lib/components/carousel/ProjectsCarousel.svelte';
+
+	const projects = [
+		{
+			id: 1,
+			title: 'Piso en Chamberí',
+			subtitle: 'Compra + Home Staging + Venta',
+			meta: 'Vendido en 15 días con 12% de revalorización',
+			description:
+				'Actualizamos salón, dormitorios y zonas de paso con un estilo cálido y neutro para maximizar el atractivo en visitas.',
+			imageUrl:
+				'https://images.pexels.com/photos/3958952/pexels-photo-3958952.jpeg?auto=compress&cs=tinysrgb&w=1600'
+		},
+		{
+			id: 2,
+			title: 'Apartamento en Malasaña',
+			subtitle: 'Compra + Reforma Integral + Diseño',
+			meta: 'Reforma completa en 8 semanas',
+			description:
+				'Redistribución completa del espacio, nueva cocina abierta y diseño a medida pensado para alquiler turístico.',
+			imageUrl:
+				'https://images.pexels.com/photos/3965521/pexels-photo-3965521.jpeg?auto=compress&cs=tinysrgb&w=1600'
+		},
+		{
+			id: 3,
+			title: 'Casa en Pozuelo',
+			subtitle: 'Servicio Integral Completo',
+			meta: 'De la búsqueda a la mudanza en 3 meses',
+			description:
+				'Acompañamos a la familia desde la selección de la vivienda hasta la decoración final de cada estancia.',
+			imageUrl:
+				'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=1600'
+		}
+	];
 
 	import type { ComponentProps } from 'svelte';
 	import type { FaqItem } from '$lib/components/sections/FaqSection.svelte';
@@ -259,43 +293,50 @@
 	</section>
 
 	<!-- 4. Título centrado: "Nuevas ideas a la vida" -->
-	<section id="claim" class="section section--centered-heading">
+	<!-- <section id="claim" class="section section--centered-heading">
 		<CenteredHeadingSection
-			title="Nuevas ideas a la vida"
+			title="Proyectos que nos avalan"
 			text="Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id suscipit ex. Suspendisse rhoncus laoreet purus quis elementum. Phasellus sed efficitur dolor, et ultricies sapien. Quisque fringilla sit amet dolor commodo efficitur. Aliquam et sem odio. In ullamcorper nisi nunc, et molestie ipsum iaculis sit amet."
 		/>
-	</section>
+	</section> -->
 
 	<!-- 5. Mosaico grande: "Más de 50 ideas de diseño de interiores" -->
-	<section id="interiores" class="section section--gallery">
+	<!-- <section id="interiores" class="section section--gallery">
 		<GalleryWithTextSection
 			title="Más de 50 ideas de diseño de interiores"
 			text={interiorGalleryText}
 			images={interiorGalleryImages}
 		/>
-	</section>
+	</section> -->
 
 	<!-- 6. "Casa y apartamento" + 2 imágenes -->
-	<section id="tipologias" class="section section--house-apartment">
+	<!-- <section id="tipologias" class="section section--house-apartment">
 		<TwoImageSection
 			title={casaApartamento.title}
 			text={casaApartamento.text}
 			leftImage={casaApartamento.leftImage}
 			rightImage={casaApartamento.rightImage}
 		/>
+	</section> -->
+
+	<section>
+		<ProjectsCarousel {projects} />
 	</section>
 
 	<!-- 7. Bloque numerado (argumentos racionales) -->
-	<section id="equipo" class="section section--numbered">
+	<!-- <section id="equipo" class="section section--numbered">
 		<header class="numbered-section__header">
 			<p class="numbered-section__eyebrow">Here are the Features</p>
 			<h2 class="numbered-section__title">Resultados esperados</h2>
 		</header>
 
 		<NumberedFeatureGrid items={numberedItems} />
-	</section>
+	</section> -->
 
-	<!-- 8. Preguntas frecuentes -->
+	<!-- 8. Contacto + mapa -->
+	<ContactSection id="contacto" />
+
+	<!-- 9. Preguntas frecuentes -->
 	<section id="faq" class="section section--faq">
 		<FaqSection
 			title="Preguntas frecuentes"
@@ -303,9 +344,6 @@
 			items={faqs}
 		/>
 	</section>
-
-	<!-- 9. Contacto + mapa -->
-	<ContactSection id="contacto" />
 </main>
 
 <style>
@@ -313,6 +351,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2.5rem;
+		padding-bottom: 2.5rem;
 		padding-top: var(--header-offset);
 	}
 
@@ -355,6 +394,7 @@
 	@media (max-width: 768px) {
 		main {
 			gap: 8rem;
+			padding-bottom: 8rem;
 		}
 	}
 
