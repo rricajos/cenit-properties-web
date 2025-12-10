@@ -168,24 +168,24 @@
 	const tags = ['Diseños · Reformas · Asesorías'];
 
 	const featureItems: FeatureItem[] = [
-		{
-			icon: 'rocket',
-			title: 'Proyectos que revalorizan',
-			text: 'Seleccionamos, reformamos y preparamos cada inmueble para que destaque en el mercado y aumente su valor real y percibido.',
-			href: '#interiores'
-		},
-		{
-			icon: 'medal',
-			title: 'Resultados medibles',
-			text: 'Analizamos cada operación: tiempos de venta, incremento de valor tras la reforma y satisfacción de propietarios e inversores.',
-			href: '#claim'
-		},
-		{
-			icon: 'team',
-			title: 'Nuestro equipo',
-			text: 'Arquitectura, interiorismo, reforma y asesoría fiscal en un mismo equipo para que no tengas que coordinar a nadie más.',
-			href: '#equipo'
-		}
+		// {
+		// 	icon: 'rocket',
+		// 	title: 'Proyectos que revalorizan',
+		// 	text: 'Seleccionamos, reformamos y preparamos cada inmueble para que destaque en el mercado y aumente su valor real y percibido.',
+		// 	href: '#interiores'
+		// },
+		// {
+		// 	icon: 'medal',
+		// 	title: 'Resultados medibles',
+		// 	text: 'Analizamos cada operación: tiempos de venta, incremento de valor tras la reforma y satisfacción de propietarios e inversores.',
+		// 	href: '#claim'
+		// },
+		// {
+		// 	icon: 'team',
+		// 	title: 'Nuestro equipo',
+		// 	text: 'Arquitectura, interiorismo, reforma y asesoría fiscal en un mismo equipo para que no tengas que coordinar a nadie más.',
+		// 	href: '#equipo'
+		// }
 	];
 
 	const numberedItems: NumberedItem[] = [
