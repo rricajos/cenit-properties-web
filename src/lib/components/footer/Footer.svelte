@@ -46,7 +46,7 @@
 			<FooterColumn title="Empresa">
 				<ul class="site-footer__list">
 					<li><a href="#proyectos">Proyectos</a></li>
-					<li><a href="#equipo">Nuestro equipo</a></li>
+					<!-- <li><a href="#equipo">Nuestro equipo</a></li> -->
 					<li><a href="#faq">Preguntas frecuentes</a></li>
 					<li><a href="#contacto">Contacto</a></li>
 				</ul>

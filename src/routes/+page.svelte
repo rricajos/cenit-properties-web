@@ -283,12 +283,12 @@
 	</section>
 
 	<!-- 2. PROYECTOS / PREMIOS / NUESTRO EQUIPO -->
-	<section id="proyectos" class="section section--features">
+	<section id="servicios" class="section section--features">
 		<FeatureCardGrid items={featureItems} />
 	</section>
 
 	<!-- 3. Servicios en mosaico -->
-	<section id="servicios" class="section section--mosaic">
+	<section class="section section--mosaic">
 		<MosaicSection id="mosaic" items={serviciosItems} />
 	</section>
 
@@ -319,7 +319,7 @@
 		/>
 	</section> -->
 
-	<section>
+	<section id="proyectos">
 		<ProjectsCarousel {projects} />
 	</section>
 

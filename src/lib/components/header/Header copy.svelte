@@ -6,7 +6,7 @@
 	export let links: NavLink[] = [
 		{ href: '#proyectos', label: 'Proyectos' },
 		{ href: '#servicios', label: 'Servicios' },
-		{ href: '#equipo', label: 'Equipo' },
+		// { href: '#equipo', label: 'Equipo' },
 		{ href: '#contacto', label: 'Contacto' }
 	];
 
