@@ -39,8 +39,4 @@
 	.l-shell__main {
 		flex: 1 0 auto;
 	}
-
-	.l-shell--framed {
-		padding: 0 var(--layout-frame-padding, 0.25rem);
-	}
 </style>
