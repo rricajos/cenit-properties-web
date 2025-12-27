@@ -62,7 +62,6 @@
 		background: var(--color-bg);
 		backdrop-filter: blur(6px);
 		border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
 	}
 
 	.site-header__inner {

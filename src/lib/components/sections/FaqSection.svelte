@@ -1,10 +1,12 @@
-<script lang="ts">
-	import { slide } from 'svelte/transition';
-
+<script context="module" lang="ts">
 	export type FaqItem = {
 		question: string;
 		answer: string;
 	};
+</script>
+
+<script lang="ts">
+	import { slide } from 'svelte/transition';
 
 	export let eyebrow: string = 'FAQ · Frequently Asked Questions';
 	export let title: string = 'Preguntas frecuentes';

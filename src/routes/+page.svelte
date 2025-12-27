@@ -2,10 +2,10 @@
 	import HeroSplit from '$lib/components/hero/HeroSplit.svelte';
 	import FeatureCardGrid from '$lib/components/features/FeatureCardGrid.svelte';
 	import MosaicSection from '$lib/components/mosaic/MosaicSection.svelte';
-	import CenteredHeadingSection from '$lib/components/sections/CenteredHeadingSection.svelte';
-	import GalleryWithTextSection from '$lib/components/mosaic/GalleryWithTextSection.svelte';
-	import TwoImageSection from '$lib/components/sections/TwoImageSection.svelte';
-	import NumberedFeatureGrid from '$lib/components/features/NumberedFeatureGrid.svelte';
+	// import CenteredHeadingSection from '$lib/components/sections/CenteredHeadingSection.svelte';
+	// import GalleryWithTextSection from '$lib/components/mosaic/GalleryWithTextSection.svelte';
+	// import TwoImageSection from '$lib/components/sections/TwoImageSection.svelte';
+	// import NumberedFeatureGrid from '$lib/components/features/NumberedFeatureGrid.svelte';
 	import ContactSection from '$lib/components/contact/ContactSection.svelte';
 	import MosaicItem from '$lib/components/mosaic/MosaicItem.svelte';
 	import FaqSection from '$lib/components/sections/FaqSection.svelte';
@@ -365,7 +365,7 @@
 		position: relative;
 		margin-top: 0;
 	}
-
+	/* 
 	.section--contact {
 		max-width: none;
 		padding-inline: 0;
@@ -389,7 +389,7 @@
 		margin: 0;
 		font-size: clamp(1.4rem, 2.1vw, 1.8rem);
 		line-height: 1.2;
-	}
+	} */
 
 	@media (max-width: 768px) {
 		main {
