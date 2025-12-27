@@ -75,15 +75,24 @@
 		margin-inline: auto;
 	}
 
+	/* 1) Contenedor general más “premium” en light, y con profundidad en dark */
 	.faq-section__inner {
-		border-radius: var(--radius-lg, 1.5rem);
+		border-radius: var(--radius-lg);
 		padding: 2.2rem 2rem;
-		background: var(--color-surface-elevated);
+
+		/* En vez de gris plano, una superficie clara con un tinte mínimo */
+		background: linear-gradient(
+			180deg,
+			color-mix(in oklab, var(--color-card) 95%, var(--color-accent) 5%),
+			var(--color-card)
+		);
+
+		border: 1px solid color-mix(in oklab, var(--color-border-subtle) 80%, transparent);
 		box-shadow: var(--shadow-elevated);
+
 		display: grid;
 		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 		gap: 2.5rem;
-		border: 1px solid var(--color-border-subtle);
 	}
 
 	@media (max-width: 768px) {
@@ -106,7 +115,7 @@
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: var(--color-accent);
-		font-weight: 600;
+		font-weight: 700;
 	}
 
 	.faq-section__title {
@@ -138,24 +147,27 @@
 	.faq-section__list {
 		display: flex;
 		flex-direction: column;
-		gap: 0.7rem;
+		gap: 0.85rem;
 	}
 
+	/* 2) Tarjetas menos “blanco nuclear” y con borde más fino */
 	.faq-item {
-		border-radius: var(--radius-md, 1rem);
-		border: 1px solid var(--color-border-subtle);
-		background: var(--color-surface);
+		border-radius: var(--radius-md);
+		border: 1px solid color-mix(in oklab, var(--color-border-subtle) 85%, transparent);
+		background: color-mix(in oklab, var(--color-surface) 96%, var(--color-accent) 4%);
 		overflow: hidden;
+		box-shadow: var(--shadow-soft);
 	}
 
-	/* para hover/focus consistente en light + dark */
+	/* 3) Botón con hover visible en light y dark */
 	.faq-item__button {
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 1.2rem;
-		padding: 0.85rem 1rem;
+		padding: 0.95rem 1rem;
+
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -165,34 +177,38 @@
 	}
 
 	.faq-item__button:hover {
-		background: var(--accent-soft);
+		background: var(--color-surface);
 	}
 
 	.faq-item__button:focus-visible {
 		outline: 2px solid var(--color-accent);
-		outline-offset: 2px;
+		outline-offset: 3px;
 	}
 
 	.faq-item__question {
 		flex: 1;
-		font-weight: 600;
-		font-size: 0.96rem;
+		font-weight: 650;
+		font-size: 0.98rem;
 	}
 
 	.faq-item__icon {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.9rem;
+		height: 1.9rem;
 		border-radius: 999px;
-		border: 1px solid var(--color-border-subtle);
+
+		border: 1px solid color-mix(in oklab, var(--color-border-subtle) 85%, transparent);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+
 		transition:
 			background 140ms ease-out,
 			transform 140ms ease-out,
 			color 140ms ease-out,
 			border-color 140ms ease-out;
+
 		color: var(--color-text-muted);
+		background: transparent;
 	}
 
 	.faq-item__chevron {
@@ -201,24 +217,28 @@
 		transition: transform 160ms ease-out;
 	}
 
+	/* Estado abierto con tinte (en light se nota, en dark también) */
 	.faq-item__icon[data-open='true'] {
-		background: var(--accent-soft);
+		background: color-mix(in oklab, var(--color-surface) 82%, var(--color-accent) 18%);
 		color: var(--accent-strong);
-		border-color: var(--color-border-subtle);
+		border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-border-subtle) 60%);
 	}
 
 	.faq-item__icon[data-open='true'] .faq-item__chevron {
 		transform: rotate(180deg);
 	}
 
+	/* Panel con separación más elegante */
 	.faq-item__panel {
-		padding: 0 1rem 0.85rem;
+		padding: 0.75rem 1rem 1rem 1rem;
+		border-top: 1px solid color-mix(in oklab, var(--color-border-subtle) 75%, transparent);
+		background: color-mix(in oklab, var(--color-surface) 98%, var(--color-accent) 2%);
 	}
 
 	.faq-item__answer {
 		margin: 0;
-		font-size: 0.9rem;
-		line-height: 1.6;
+		font-size: 0.92rem;
+		line-height: 1.7;
 		color: var(--color-text-muted);
 	}
 </style>

@@ -19,8 +19,8 @@
 	--color-primary-contrast: #ffffff;
 
 	/* Acentos secundarios (tags, chips, detalles) */
-	--accent-soft: #e5e7eb;
-	--accent-strong: #111827;
+	--accent-soft: rgba(30, 64, 175, 0.1); /* azul muy suave */
+	--accent-strong: #1e3a8a; /* azul oscuro discreto */
 
 	/* Superficies y bordes */
 	--color-surface: var(--color-card);
@@ -28,7 +28,7 @@
 	--color-border-subtle: #d1d5db;
 
 	/* Accent semántico (chips, eyebrow, etc.) */
-	--color-accent: var(--color-primary);
+	--color-accent: #1d4ed8; /* azul moderado (no “neón”) */
 
 	/* Estados de formulario (bien/mal) */
 	--color-success: #16a34a;
@@ -109,8 +109,8 @@
 		--color-primary-contrast: #020617;
 
 		/* Acentos */
-		--accent-soft: #111827;
-		--accent-strong: #e5e7eb;
+		--accent-soft: rgba(96, 165, 250, 0.14); /* azul suave en dark */
+		--accent-strong: #93c5fd; /* azul claro (iconos/estado abierto) */
 
 		/* Superficies y bordes en dark */
 		--color-surface: var(--color-card);
@@ -118,7 +118,7 @@
 		--color-border-subtle: #1f2937;
 
 		/* Accent semántico */
-		--color-accent: var(--color-primary);
+		--color-accent: #60a5fa; /* azul medio claro en dark */
 
 		/* Estados de formulario en dark */
 		--color-success: #22c55e;
@@ -189,4 +189,25 @@ figure {
 	background-color: transparent;
 	color: var(--color-text);
 	border-color: var(--color-text);
+}
+a {
+	color: var(--color-accent);
+	text-decoration: none;
+	text-underline-offset: 0.18em;
+	text-decoration-thickness: 0.08em;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+	border-radius: 0.25rem;
+}
+
+/* opcional: visited ligeramente distinto pero sin “morado feo” */
+a:visited {
+	color: color-mix(in oklab, var(--color-accent) 75%, var(--color-text) 25%);
 }
