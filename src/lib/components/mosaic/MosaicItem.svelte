@@ -119,11 +119,10 @@
 			box-shadow: 0 22px 48px rgba(15, 23, 42, 0.32);
 		}
 
-		.mosaic-item--image:hover .mosaic-item__image,
-		.mosaic-item--image:focus-within .mosaic-item__image {
-			/* zoom + tilt 3D suave */
-			transform: scale(1.08) rotate3d(0.18, 0.85, 0, -4deg) translateY(-2px);
-			filter: brightness(1.03) saturate(1.04);
-		}
+		/* .mosaic-item:hover .mosaic-item__image,
+		.mosaic-item:focus-within .mosaic-item__image {
+			transform: scale(1.02) rotate3d(0.18, 0.85, 0, -4deg) translateY(-2px);
+			filter: brightness(1.1) saturate(1.04);
+		} */
 	}
 </style>

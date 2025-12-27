@@ -200,6 +200,7 @@
 		font-size: clamp(1.6rem, 2.4vw, 2rem);
 		font-weight: 600;
 		color: var(--color-text);
+		padding-top: 2rem;
 	}
 
 	.contact-subtitle {

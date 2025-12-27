@@ -78,11 +78,12 @@
 	.faq-section__inner {
 		border-radius: var(--radius-lg, 1.5rem);
 		padding: 2.2rem 2rem;
-		background: var(--color-surface-elevated, #f7f7fb);
-		box-shadow: var(--shadow-elevated, 0 18px 40px rgba(15, 23, 42, 0.12));
+		background: var(--color-surface-elevated);
+		box-shadow: var(--shadow-elevated);
 		display: grid;
 		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 		gap: 2.5rem;
+		border: 1px solid var(--color-border-subtle);
 	}
 
 	@media (max-width: 768px) {
@@ -104,7 +105,7 @@
 		font-size: 0.78rem;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: var(--color-accent, #7c3aed);
+		color: var(--color-accent);
 		font-weight: 600;
 	}
 
@@ -119,7 +120,7 @@
 		margin: 0;
 		font-size: 0.95rem;
 		line-height: 1.7;
-		color: var(--color-text-muted, #555);
+		color: var(--color-text-muted);
 		max-width: 28rem;
 	}
 
@@ -142,11 +143,12 @@
 
 	.faq-item {
 		border-radius: var(--radius-md, 1rem);
-		border: 1px solid var(--color-border-subtle, #e0e0ee);
-		background: var(--color-surface, #ffffff);
+		border: 1px solid var(--color-border-subtle);
+		background: var(--color-surface);
 		overflow: hidden;
 	}
 
+	/* para hover/focus consistente en light + dark */
 	.faq-item__button {
 		width: 100%;
 		display: flex;
@@ -163,12 +165,11 @@
 	}
 
 	.faq-item__button:hover {
-		/* pequeña elevación neutra que funciona en light y dark */
-		background: rgba(255, 255, 255, 0.04);
+		background: var(--accent-soft);
 	}
 
 	.faq-item__button:focus-visible {
-		outline: 2px solid var(--color-accent, #7c3aed);
+		outline: 2px solid var(--color-accent);
 		outline-offset: 2px;
 	}
 
@@ -182,14 +183,15 @@
 		width: 1.75rem;
 		height: 1.75rem;
 		border-radius: 999px;
-		border: 1px solid var(--color-border-subtle, #e0e0ee);
+		border: 1px solid var(--color-border-subtle);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 1rem;
 		transition:
 			background 140ms ease-out,
-			transform 140ms ease-out;
+			transform 140ms ease-out,
+			color 140ms ease-out,
+			border-color 140ms ease-out;
 		color: var(--color-text-muted);
 	}
 
@@ -200,8 +202,9 @@
 	}
 
 	.faq-item__icon[data-open='true'] {
-		background: var(--accent-soft, rgba(124, 58, 237, 0.08));
-		color: var(--accent-strong, #7c3aed);
+		background: var(--accent-soft);
+		color: var(--accent-strong);
+		border-color: var(--color-border-subtle);
 	}
 
 	.faq-item__icon[data-open='true'] .faq-item__chevron {
@@ -216,6 +219,6 @@
 		margin: 0;
 		font-size: 0.9rem;
 		line-height: 1.6;
-		color: var(--color-text-muted, #555);
+		color: var(--color-text-muted);
 	}
 </style>

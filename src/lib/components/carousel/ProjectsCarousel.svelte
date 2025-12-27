@@ -253,6 +253,7 @@
 		font-weight: 700;
 		color: var(--color-text);
 		margin: 0 0 0.5rem;
+		padding-top: 2rem;
 	}
 
 	.section-subtitle {
